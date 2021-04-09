@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TheSkyXLib;
+using TheSky64Lib;
 
 
 namespace NightShift
@@ -71,7 +71,7 @@ namespace NightShift
             }
 
             //TSX always returns 0 (false) on PropertyApplies for ALL_INFO, so ignor it
-            tsxoi.Property(TheSkyXLib.Sk6ObjectInformationProperty.sk6ObjInfoProp_ALL_INFO);
+            tsxoi.Property(TheSky64Lib.Sk6ObjectInformationProperty.sk6ObjInfoProp_ALL_INFO);
             string sAllInfo = tsxoi.ObjInfoPropOut;
             sAllInfo = sAllInfo.Replace("/", "-");
             string[] sInfoDB = sAllInfo.Split('\n');
