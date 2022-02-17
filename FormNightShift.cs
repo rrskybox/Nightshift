@@ -202,6 +202,26 @@ namespace NightShift
             return;
         }
 
+        private void VariScanButton_Click(object sender, EventArgs e)
+        {
+            VariScanButton.BackColor = RunningButtonColor;
+            bool islaunched = LaunchToolKitApp("VariScan");
+            if (islaunched) VariScanButton.BackColor = ReadyButtonColor;
+            else VariScanButton.BackColor = RunningButtonColor;
+            if (islaunched) WriteTextLog("VariScan launched");
+            return;
+        }
+
+        private void HotPursuitButton_Click(object sender, EventArgs e)
+        {
+            HotPursuitButton.BackColor = RunningButtonColor;
+            bool islaunched = LaunchToolKitApp("Hot Pursuit");
+            if (islaunched) HotPursuitButton.BackColor = ReadyButtonColor;
+            else HotPursuitButton.BackColor = RunningButtonColor;
+            if (islaunched) WriteTextLog("HotPursuit launched");
+            return;
+        }
+
         private void KilolaniStartUpButton_Click(object sender, EventArgs e)
         {
             KilolaniStartUpButton.BackColor = RunningButtonColor;
@@ -222,6 +242,16 @@ namespace NightShift
             return;
         }
 
+        private void InitializeButton_Click(object sender, EventArgs e)
+        {
+            InitializeButton.BackColor = RunningButtonColor;
+            bool islaunched = LaunchToolKitApp("KilolaniStandardConfiguration");
+            if (islaunched) InitializeButton.BackColor = ReadyButtonColor;
+            else InitializeButton.BackColor = RunningButtonColor;
+            if (islaunched) WriteTextLog("Kilolani Standard Configuration launched");
+            return;
+
+        }
         private void KilolaniPowerButton_Click(object sender, EventArgs e)
         {
             KilolaniPowerButton.BackColor = RunningButtonColor;
@@ -342,7 +372,6 @@ namespace NightShift
             else PreStackPIButton.BackColor = RunningButtonColor;
             if (islaunched) WriteTextLog("PreStackPI launched");
             return;
-
         }
 
         private void PreStackButton_Click(object sender, EventArgs e)
@@ -353,8 +382,18 @@ namespace NightShift
             else PreStackButton.BackColor = RunningButtonColor;
             if (islaunched) WriteTextLog("PreStack Kilani Launched");
             return;
-
         }
+
+        private void TransientSearchButton_Click(object sender, EventArgs e)
+        {
+            TransientSearchButton.BackColor = RunningButtonColor;
+            bool islaunched = LaunchToolKitApp("Transient Search");
+            if (islaunched) TransientSearchButton.BackColor = ReadyButtonColor;
+            else TransientSearchButton.BackColor = RunningButtonColor;
+            if (islaunched) WriteTextLog("Transient Search Launched");
+            return;
+        }
+
 
         private void OlympiaWeatherButton_Click(object sender, EventArgs e)
         {
@@ -504,7 +543,7 @@ namespace NightShift
             }
             HumasonLogTextBox.Text = writeLog;
             HumasonLogTextBox.Select(0, 0);
-            ParsedTextBox.Text = parsedLog;;
+            ParsedTextBox.Text = parsedLog; ;
             ParsedTextBox.Select(0, 0);
             return;
         }
@@ -571,6 +610,6 @@ namespace NightShift
             return imgDataOut;
         }
 
-     }
+    }
 
 }

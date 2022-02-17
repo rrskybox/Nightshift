@@ -62,6 +62,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ImagingGroup = new System.Windows.Forms.GroupBox();
+            this.VariScanButton = new System.Windows.Forms.Button();
             this.AtGuider2Button = new System.Windows.Forms.Button();
             this.PECCollectButton = new System.Windows.Forms.Button();
             this.PECMergeButton = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.SeeingAnalyzerButton = new System.Windows.Forms.Button();
             this.SubFrameButton = new System.Windows.Forms.Button();
             this.ToolGroup = new System.Windows.Forms.GroupBox();
+            this.GuideLogButton = new System.Windows.Forms.Button();
             this.DarksKnightButton = new System.Windows.Forms.Button();
             this.TargetDataGrid = new System.Windows.Forms.DataGridView();
             this.TargetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,7 +100,9 @@
             this.ParsedTextBox = new System.Windows.Forms.TextBox();
             this.LogNotesTab = new System.Windows.Forms.TabPage();
             this.ClearLogButton = new System.Windows.Forms.Button();
-            this.GuideLogButton = new System.Windows.Forms.Button();
+            this.HotPursuitButton = new System.Windows.Forms.Button();
+            this.InitializeButton = new System.Windows.Forms.Button();
+            this.TransientSearchButton = new System.Windows.Forms.Button();
             this.KilolaniGroup.SuspendLayout();
             this.MoonGroup.SuspendLayout();
             this.SunGroup.SuspendLayout();
@@ -151,7 +155,7 @@
             // 
             this.HumasonButton.BackColor = System.Drawing.Color.LightGreen;
             this.HumasonButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HumasonButton.Location = new System.Drawing.Point(9, 19);
+            this.HumasonButton.Location = new System.Drawing.Point(11, 19);
             this.HumasonButton.Name = "HumasonButton";
             this.HumasonButton.Size = new System.Drawing.Size(85, 23);
             this.HumasonButton.TabIndex = 3;
@@ -163,7 +167,7 @@
             // 
             this.SuperScanButton.BackColor = System.Drawing.Color.LightGreen;
             this.SuperScanButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.SuperScanButton.Location = new System.Drawing.Point(9, 48);
+            this.SuperScanButton.Location = new System.Drawing.Point(11, 119);
             this.SuperScanButton.Name = "SuperScanButton";
             this.SuperScanButton.Size = new System.Drawing.Size(85, 23);
             this.SuperScanButton.TabIndex = 4;
@@ -175,7 +179,7 @@
             // 
             this.KilolaniShutDownButton.BackColor = System.Drawing.Color.LightGreen;
             this.KilolaniShutDownButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.KilolaniShutDownButton.Location = new System.Drawing.Point(7, 77);
+            this.KilolaniShutDownButton.Location = new System.Drawing.Point(15, 150);
             this.KilolaniShutDownButton.Name = "KilolaniShutDownButton";
             this.KilolaniShutDownButton.Size = new System.Drawing.Size(87, 23);
             this.KilolaniShutDownButton.TabIndex = 5;
@@ -187,7 +191,7 @@
             // 
             this.KilolaniStartUpButton.BackColor = System.Drawing.Color.LightGreen;
             this.KilolaniStartUpButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.KilolaniStartUpButton.Location = new System.Drawing.Point(7, 48);
+            this.KilolaniStartUpButton.Location = new System.Drawing.Point(15, 48);
             this.KilolaniStartUpButton.Name = "KilolaniStartUpButton";
             this.KilolaniStartUpButton.Size = new System.Drawing.Size(87, 23);
             this.KilolaniStartUpButton.TabIndex = 6;
@@ -198,23 +202,24 @@
             // KilolaniGroup
             // 
             this.KilolaniGroup.BackColor = System.Drawing.Color.DarkCyan;
+            this.KilolaniGroup.Controls.Add(this.InitializeButton);
             this.KilolaniGroup.Controls.Add(this.PreStackButton);
             this.KilolaniGroup.Controls.Add(this.KilolaniPowerButton);
             this.KilolaniGroup.Controls.Add(this.KilolaniStartUpButton);
             this.KilolaniGroup.Controls.Add(this.KilolaniShutDownButton);
             this.KilolaniGroup.ForeColor = System.Drawing.Color.White;
-            this.KilolaniGroup.Location = new System.Drawing.Point(55, 114);
+            this.KilolaniGroup.Location = new System.Drawing.Point(5, 139);
             this.KilolaniGroup.Name = "KilolaniGroup";
-            this.KilolaniGroup.Size = new System.Drawing.Size(107, 137);
+            this.KilolaniGroup.Size = new System.Drawing.Size(120, 217);
             this.KilolaniGroup.TabIndex = 7;
             this.KilolaniGroup.TabStop = false;
-            this.KilolaniGroup.Text = "Kilolani ";
+            this.KilolaniGroup.Text = "Kilolani System";
             // 
             // PreStackButton
             // 
             this.PreStackButton.BackColor = System.Drawing.Color.LightGreen;
             this.PreStackButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PreStackButton.Location = new System.Drawing.Point(7, 106);
+            this.PreStackButton.Location = new System.Drawing.Point(15, 179);
             this.PreStackButton.Name = "PreStackButton";
             this.PreStackButton.Size = new System.Drawing.Size(87, 23);
             this.PreStackButton.TabIndex = 8;
@@ -226,7 +231,7 @@
             // 
             this.KilolaniPowerButton.BackColor = System.Drawing.Color.LightGreen;
             this.KilolaniPowerButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.KilolaniPowerButton.Location = new System.Drawing.Point(7, 19);
+            this.KilolaniPowerButton.Location = new System.Drawing.Point(15, 19);
             this.KilolaniPowerButton.Name = "KilolaniPowerButton";
             this.KilolaniPowerButton.Size = new System.Drawing.Size(87, 23);
             this.KilolaniPowerButton.TabIndex = 7;
@@ -297,7 +302,7 @@
             this.MoonGroup.Controls.Add(this.label1);
             this.MoonGroup.Controls.Add(this.label2);
             this.MoonGroup.ForeColor = System.Drawing.Color.White;
-            this.MoonGroup.Location = new System.Drawing.Point(176, 211);
+            this.MoonGroup.Location = new System.Drawing.Point(128, 7);
             this.MoonGroup.Name = "MoonGroup";
             this.MoonGroup.Size = new System.Drawing.Size(119, 126);
             this.MoonGroup.TabIndex = 14;
@@ -333,7 +338,7 @@
             this.SunGroup.Controls.Add(this.label6);
             this.SunGroup.Controls.Add(this.label7);
             this.SunGroup.ForeColor = System.Drawing.Color.White;
-            this.SunGroup.Location = new System.Drawing.Point(176, 21);
+            this.SunGroup.Location = new System.Drawing.Point(3, 7);
             this.SunGroup.Name = "SunGroup";
             this.SunGroup.Size = new System.Drawing.Size(119, 126);
             this.SunGroup.TabIndex = 16;
@@ -411,21 +416,35 @@
             // ImagingGroup
             // 
             this.ImagingGroup.BackColor = System.Drawing.Color.DarkCyan;
+            this.ImagingGroup.Controls.Add(this.HotPursuitButton);
+            this.ImagingGroup.Controls.Add(this.VariScanButton);
             this.ImagingGroup.Controls.Add(this.HumasonButton);
             this.ImagingGroup.Controls.Add(this.SuperScanButton);
             this.ImagingGroup.ForeColor = System.Drawing.Color.White;
-            this.ImagingGroup.Location = new System.Drawing.Point(55, 22);
+            this.ImagingGroup.Location = new System.Drawing.Point(253, 7);
             this.ImagingGroup.Name = "ImagingGroup";
-            this.ImagingGroup.Size = new System.Drawing.Size(107, 86);
+            this.ImagingGroup.Size = new System.Drawing.Size(107, 349);
             this.ImagingGroup.TabIndex = 17;
             this.ImagingGroup.TabStop = false;
             this.ImagingGroup.Text = "Imaging";
+            // 
+            // VariScanButton
+            // 
+            this.VariScanButton.BackColor = System.Drawing.Color.LightGreen;
+            this.VariScanButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.VariScanButton.Location = new System.Drawing.Point(11, 148);
+            this.VariScanButton.Name = "VariScanButton";
+            this.VariScanButton.Size = new System.Drawing.Size(85, 23);
+            this.VariScanButton.TabIndex = 5;
+            this.VariScanButton.Text = "VariScan";
+            this.VariScanButton.UseVisualStyleBackColor = false;
+            this.VariScanButton.Click += new System.EventHandler(this.VariScanButton_Click);
             // 
             // AtGuider2Button
             // 
             this.AtGuider2Button.BackColor = System.Drawing.Color.LightGreen;
             this.AtGuider2Button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AtGuider2Button.Location = new System.Drawing.Point(18, 148);
+            this.AtGuider2Button.Location = new System.Drawing.Point(18, 134);
             this.AtGuider2Button.Name = "AtGuider2Button";
             this.AtGuider2Button.Size = new System.Drawing.Size(83, 23);
             this.AtGuider2Button.TabIndex = 5;
@@ -437,7 +456,7 @@
             // 
             this.PECCollectButton.BackColor = System.Drawing.Color.LightGreen;
             this.PECCollectButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PECCollectButton.Location = new System.Drawing.Point(18, 206);
+            this.PECCollectButton.Location = new System.Drawing.Point(18, 192);
             this.PECCollectButton.Name = "PECCollectButton";
             this.PECCollectButton.Size = new System.Drawing.Size(83, 23);
             this.PECCollectButton.TabIndex = 18;
@@ -449,7 +468,7 @@
             // 
             this.PECMergeButton.BackColor = System.Drawing.Color.LightGreen;
             this.PECMergeButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PECMergeButton.Location = new System.Drawing.Point(18, 235);
+            this.PECMergeButton.Location = new System.Drawing.Point(18, 221);
             this.PECMergeButton.Name = "PECMergeButton";
             this.PECMergeButton.Size = new System.Drawing.Size(83, 23);
             this.PECMergeButton.TabIndex = 19;
@@ -461,7 +480,7 @@
             // 
             this.AFProfilerButton.BackColor = System.Drawing.Color.LightGreen;
             this.AFProfilerButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AFProfilerButton.Location = new System.Drawing.Point(18, 119);
+            this.AFProfilerButton.Location = new System.Drawing.Point(18, 105);
             this.AFProfilerButton.Name = "AFProfilerButton";
             this.AFProfilerButton.Size = new System.Drawing.Size(83, 23);
             this.AFProfilerButton.TabIndex = 20;
@@ -473,7 +492,7 @@
             // 
             this.AGProfilerButton.BackColor = System.Drawing.Color.LightGreen;
             this.AGProfilerButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AGProfilerButton.Location = new System.Drawing.Point(18, 90);
+            this.AGProfilerButton.Location = new System.Drawing.Point(18, 76);
             this.AGProfilerButton.Name = "AGProfilerButton";
             this.AGProfilerButton.Size = new System.Drawing.Size(83, 23);
             this.AGProfilerButton.TabIndex = 21;
@@ -487,18 +506,18 @@
             this.PortableGroup.Controls.Add(this.PreStackPIButton);
             this.PortableGroup.Controls.Add(this.MobilizerButton);
             this.PortableGroup.ForeColor = System.Drawing.Color.White;
-            this.PortableGroup.Location = new System.Drawing.Point(55, 257);
+            this.PortableGroup.Location = new System.Drawing.Point(131, 139);
             this.PortableGroup.Name = "PortableGroup";
-            this.PortableGroup.Size = new System.Drawing.Size(107, 80);
+            this.PortableGroup.Size = new System.Drawing.Size(116, 80);
             this.PortableGroup.TabIndex = 9;
             this.PortableGroup.TabStop = false;
-            this.PortableGroup.Text = "Portable";
+            this.PortableGroup.Text = "Portable System";
             // 
             // PreStackPIButton
             // 
             this.PreStackPIButton.BackColor = System.Drawing.Color.LightGreen;
             this.PreStackPIButton.ForeColor = System.Drawing.Color.Black;
-            this.PreStackPIButton.Location = new System.Drawing.Point(7, 51);
+            this.PreStackPIButton.Location = new System.Drawing.Point(13, 45);
             this.PreStackPIButton.Name = "PreStackPIButton";
             this.PreStackPIButton.Size = new System.Drawing.Size(89, 23);
             this.PreStackPIButton.TabIndex = 8;
@@ -510,7 +529,7 @@
             // 
             this.MobilizerButton.BackColor = System.Drawing.Color.LightGreen;
             this.MobilizerButton.ForeColor = System.Drawing.Color.Black;
-            this.MobilizerButton.Location = new System.Drawing.Point(7, 19);
+            this.MobilizerButton.Location = new System.Drawing.Point(13, 16);
             this.MobilizerButton.Name = "MobilizerButton";
             this.MobilizerButton.Size = new System.Drawing.Size(89, 23);
             this.MobilizerButton.TabIndex = 7;
@@ -522,7 +541,7 @@
             // 
             this.SeeingAnalyzerButton.BackColor = System.Drawing.Color.LightGreen;
             this.SeeingAnalyzerButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.SeeingAnalyzerButton.Location = new System.Drawing.Point(18, 32);
+            this.SeeingAnalyzerButton.Location = new System.Drawing.Point(18, 18);
             this.SeeingAnalyzerButton.Name = "SeeingAnalyzerButton";
             this.SeeingAnalyzerButton.Size = new System.Drawing.Size(83, 23);
             this.SeeingAnalyzerButton.TabIndex = 22;
@@ -534,7 +553,7 @@
             // 
             this.SubFrameButton.BackColor = System.Drawing.Color.LightGreen;
             this.SubFrameButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.SubFrameButton.Location = new System.Drawing.Point(18, 61);
+            this.SubFrameButton.Location = new System.Drawing.Point(18, 47);
             this.SubFrameButton.Name = "SubFrameButton";
             this.SubFrameButton.Size = new System.Drawing.Size(83, 23);
             this.SubFrameButton.TabIndex = 23;
@@ -545,6 +564,7 @@
             // ToolGroup
             // 
             this.ToolGroup.BackColor = System.Drawing.Color.DarkCyan;
+            this.ToolGroup.Controls.Add(this.TransientSearchButton);
             this.ToolGroup.Controls.Add(this.GuideLogButton);
             this.ToolGroup.Controls.Add(this.DarksKnightButton);
             this.ToolGroup.Controls.Add(this.SeeingAnalyzerButton);
@@ -555,18 +575,30 @@
             this.ToolGroup.Controls.Add(this.AtGuider2Button);
             this.ToolGroup.Controls.Add(this.PECCollectButton);
             this.ToolGroup.ForeColor = System.Drawing.Color.White;
-            this.ToolGroup.Location = new System.Drawing.Point(312, 23);
+            this.ToolGroup.Location = new System.Drawing.Point(366, 7);
             this.ToolGroup.Name = "ToolGroup";
-            this.ToolGroup.Size = new System.Drawing.Size(118, 314);
+            this.ToolGroup.Size = new System.Drawing.Size(118, 349);
             this.ToolGroup.TabIndex = 24;
             this.ToolGroup.TabStop = false;
             this.ToolGroup.Text = "Tools";
+            // 
+            // GuideLogButton
+            // 
+            this.GuideLogButton.BackColor = System.Drawing.Color.LightGreen;
+            this.GuideLogButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.GuideLogButton.Location = new System.Drawing.Point(18, 250);
+            this.GuideLogButton.Name = "GuideLogButton";
+            this.GuideLogButton.Size = new System.Drawing.Size(83, 23);
+            this.GuideLogButton.TabIndex = 25;
+            this.GuideLogButton.Text = "Guide Log";
+            this.GuideLogButton.UseVisualStyleBackColor = false;
+            this.GuideLogButton.Click += new System.EventHandler(this.GuideLogButton_Click);
             // 
             // DarksKnightButton
             // 
             this.DarksKnightButton.BackColor = System.Drawing.Color.LightGreen;
             this.DarksKnightButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.DarksKnightButton.Location = new System.Drawing.Point(18, 177);
+            this.DarksKnightButton.Location = new System.Drawing.Point(18, 163);
             this.DarksKnightButton.Name = "DarksKnightButton";
             this.DarksKnightButton.Size = new System.Drawing.Size(83, 23);
             this.DarksKnightButton.TabIndex = 24;
@@ -779,7 +811,7 @@
             this.NightShiftTabControl.Name = "NightShiftTabControl";
             this.NightShiftTabControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.NightShiftTabControl.SelectedIndex = 0;
-            this.NightShiftTabControl.Size = new System.Drawing.Size(488, 394);
+            this.NightShiftTabControl.Size = new System.Drawing.Size(495, 394);
             this.NightShiftTabControl.TabIndex = 37;
             // 
             // ImagingTab
@@ -794,7 +826,7 @@
             this.ImagingTab.ForeColor = System.Drawing.Color.White;
             this.ImagingTab.Location = new System.Drawing.Point(4, 25);
             this.ImagingTab.Name = "ImagingTab";
-            this.ImagingTab.Size = new System.Drawing.Size(480, 365);
+            this.ImagingTab.Size = new System.Drawing.Size(487, 365);
             this.ImagingTab.TabIndex = 4;
             this.ImagingTab.Text = "Imaging";
             // 
@@ -808,7 +840,7 @@
             this.TargetTab.Location = new System.Drawing.Point(4, 25);
             this.TargetTab.Name = "TargetTab";
             this.TargetTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TargetTab.Size = new System.Drawing.Size(480, 365);
+            this.TargetTab.Size = new System.Drawing.Size(487, 365);
             this.TargetTab.TabIndex = 0;
             this.TargetTab.Text = "Targets";
             // 
@@ -821,7 +853,7 @@
             this.HumasonLogTab.ForeColor = System.Drawing.Color.White;
             this.HumasonLogTab.Location = new System.Drawing.Point(4, 25);
             this.HumasonLogTab.Name = "HumasonLogTab";
-            this.HumasonLogTab.Size = new System.Drawing.Size(480, 365);
+            this.HumasonLogTab.Size = new System.Drawing.Size(487, 365);
             this.HumasonLogTab.TabIndex = 5;
             this.HumasonLogTab.Text = "Humason Log";
             // 
@@ -871,7 +903,7 @@
             this.LogNotesTab.Location = new System.Drawing.Point(4, 25);
             this.LogNotesTab.Name = "LogNotesTab";
             this.LogNotesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.LogNotesTab.Size = new System.Drawing.Size(480, 365);
+            this.LogNotesTab.Size = new System.Drawing.Size(487, 365);
             this.LogNotesTab.TabIndex = 1;
             this.LogNotesTab.Text = "Notes";
             // 
@@ -887,24 +919,48 @@
             this.ClearLogButton.UseVisualStyleBackColor = false;
             this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
             // 
-            // GuideLogButton
+            // HotPursuitButton
             // 
-            this.GuideLogButton.BackColor = System.Drawing.Color.LightGreen;
-            this.GuideLogButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.GuideLogButton.Location = new System.Drawing.Point(18, 264);
-            this.GuideLogButton.Name = "GuideLogButton";
-            this.GuideLogButton.Size = new System.Drawing.Size(83, 23);
-            this.GuideLogButton.TabIndex = 25;
-            this.GuideLogButton.Text = "Guide Log";
-            this.GuideLogButton.UseVisualStyleBackColor = false;
-            this.GuideLogButton.Click += new System.EventHandler(this.GuideLogButton_Click);
+            this.HotPursuitButton.BackColor = System.Drawing.Color.LightGreen;
+            this.HotPursuitButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HotPursuitButton.Location = new System.Drawing.Point(11, 177);
+            this.HotPursuitButton.Name = "HotPursuitButton";
+            this.HotPursuitButton.Size = new System.Drawing.Size(85, 23);
+            this.HotPursuitButton.TabIndex = 6;
+            this.HotPursuitButton.Text = "HotPursuit";
+            this.HotPursuitButton.UseVisualStyleBackColor = false;
+            this.HotPursuitButton.Click += new System.EventHandler(this.HotPursuitButton_Click);
+            // 
+            // InitializeButton
+            // 
+            this.InitializeButton.BackColor = System.Drawing.Color.LightGreen;
+            this.InitializeButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.InitializeButton.Location = new System.Drawing.Point(15, 77);
+            this.InitializeButton.Name = "InitializeButton";
+            this.InitializeButton.Size = new System.Drawing.Size(87, 23);
+            this.InitializeButton.TabIndex = 9;
+            this.InitializeButton.Text = "Initialize";
+            this.InitializeButton.UseVisualStyleBackColor = false;
+            this.InitializeButton.Click += new System.EventHandler(this.InitializeButton_Click);
+            // 
+            // TransientSearchButton
+            // 
+            this.TransientSearchButton.BackColor = System.Drawing.Color.LightGreen;
+            this.TransientSearchButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TransientSearchButton.Location = new System.Drawing.Point(18, 304);
+            this.TransientSearchButton.Name = "TransientSearchButton";
+            this.TransientSearchButton.Size = new System.Drawing.Size(83, 37);
+            this.TransientSearchButton.TabIndex = 26;
+            this.TransientSearchButton.Text = "Transient Search";
+            this.TransientSearchButton.UseVisualStyleBackColor = false;
+            this.TransientSearchButton.Click += new System.EventHandler(this.TransientSearchButton_Click);
             // 
             // FormNightShift
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
-            this.ClientSize = new System.Drawing.Size(497, 443);
+            this.ClientSize = new System.Drawing.Size(510, 443);
             this.Controls.Add(this.ClearLogButton);
             this.Controls.Add(this.ParkButton);
             this.Controls.Add(this.CloseButton);
@@ -1001,6 +1057,10 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsDone;
         private System.Windows.Forms.Button ClearLogButton;
         private System.Windows.Forms.Button GuideLogButton;
+        private System.Windows.Forms.Button VariScanButton;
+        private System.Windows.Forms.Button HotPursuitButton;
+        private System.Windows.Forms.Button InitializeButton;
+        private System.Windows.Forms.Button TransientSearchButton;
     }
 }
 
