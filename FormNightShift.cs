@@ -100,11 +100,14 @@ namespace NightShift
             if (CheckToolKitApp("Autoguide Profiler 3") == null) DeactivateButton(AGProfilerButton);
             if (CheckToolKitApp("Darks Knight") == null) DeactivateButton(DarksKnightButton);
             if (CheckToolKitApp("Kilolani Power Control") == null) DeactivateButton(KilolaniPowerButton);
-            if (CheckToolKitApp("Kilolani Startup") == null) DeactivateButton(KilolaniStartUpButton);
-            if (CheckToolKitApp("Kilolani Shutdown") == null) DeactivateButton(KilolaniShutDownButton);
+            if (CheckToolKitApp("Kilolani Startup x64") == null) DeactivateButton(KilolaniStartUpButton);
+            if (CheckToolKitApp("Kilolani Shutdown x64") == null) DeactivateButton(KilolaniShutDownButton);
             if (CheckToolKitApp("PreStack Kilolani") == null) DeactivateButton(PreStackButton);
             if (CheckToolKitApp("Mobilizer") == null) DeactivateButton(MobilizerButton);
             if (CheckToolKitApp("PreStackPI") == null) DeactivateButton(PreStackPIButton);
+            if (CheckToolKitApp("Hot Pursuit") == null) DeactivateButton(HotPursuitButton);
+            if (CheckToolKitApp("Kilolani Standard Configuration") == null) DeactivateButton(InitializeButton);
+            if (CheckToolKitApp("Transient Search") == null) DeactivateButton(TransientSearchButton);
 
             return;
         }
@@ -225,7 +228,7 @@ namespace NightShift
         private void KilolaniStartUpButton_Click(object sender, EventArgs e)
         {
             KilolaniStartUpButton.BackColor = RunningButtonColor;
-            bool islaunched = LaunchToolKitApp("Kilolani Startup");
+            bool islaunched = LaunchToolKitApp("Kilolani Startup x64");
             if (islaunched) KilolaniStartUpButton.BackColor = ReadyButtonColor;
             else KilolaniStartUpButton.BackColor = RunningButtonColor;
             if (islaunched) WriteTextLog("Kilolani Startup launched");
@@ -235,7 +238,7 @@ namespace NightShift
         private void KilolaniShutDownButton_Click(object sender, EventArgs e)
         {
             KilolaniShutDownButton.BackColor = RunningButtonColor;
-            bool islaunched = LaunchToolKitApp("Kilolani Shutdown");
+            bool islaunched = LaunchToolKitApp("Kilolani Shutdown x64");
             if (islaunched) KilolaniShutDownButton.BackColor = ReadyButtonColor;
             else KilolaniShutDownButton.BackColor = RunningButtonColor;
             if (islaunched) WriteTextLog("Kilolani Shutdown launched");
@@ -245,7 +248,7 @@ namespace NightShift
         private void InitializeButton_Click(object sender, EventArgs e)
         {
             InitializeButton.BackColor = RunningButtonColor;
-            bool islaunched = LaunchToolKitApp("KilolaniStandardConfiguration");
+            bool islaunched = LaunchToolKitApp("Kilolani Standard Configuration");
             if (islaunched) InitializeButton.BackColor = ReadyButtonColor;
             else InitializeButton.BackColor = RunningButtonColor;
             if (islaunched) WriteTextLog("Kilolani Standard Configuration launched");
