@@ -41,6 +41,7 @@
             this.KilolaniShutDownButton = new System.Windows.Forms.Button();
             this.KilolaniStartUpButton = new System.Windows.Forms.Button();
             this.KilolaniGroup = new System.Windows.Forms.GroupBox();
+            this.InitializeButton = new System.Windows.Forms.Button();
             this.PreStackButton = new System.Windows.Forms.Button();
             this.KilolaniPowerButton = new System.Windows.Forms.Button();
             this.MoonRiseTextBox = new System.Windows.Forms.TextBox();
@@ -62,6 +63,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ImagingGroup = new System.Windows.Forms.GroupBox();
+            this.HotPursuitButton = new System.Windows.Forms.Button();
             this.VariScanButton = new System.Windows.Forms.Button();
             this.AtGuider2Button = new System.Windows.Forms.Button();
             this.PECCollectButton = new System.Windows.Forms.Button();
@@ -74,6 +76,7 @@
             this.SeeingAnalyzerButton = new System.Windows.Forms.Button();
             this.SubFrameButton = new System.Windows.Forms.Button();
             this.ToolGroup = new System.Windows.Forms.GroupBox();
+            this.TransientSearchButton = new System.Windows.Forms.Button();
             this.GuideLogButton = new System.Windows.Forms.Button();
             this.DarksKnightButton = new System.Windows.Forms.Button();
             this.TargetDataGrid = new System.Windows.Forms.DataGridView();
@@ -94,15 +97,16 @@
             this.NightShiftTabControl = new System.Windows.Forms.TabControl();
             this.ImagingTab = new System.Windows.Forms.TabPage();
             this.TargetTab = new System.Windows.Forms.TabPage();
-            this.HumasonLogTab = new System.Windows.Forms.TabPage();
-            this.HumasonLogTextBox = new System.Windows.Forms.TextBox();
-            this.HumasonLogFileListBox = new System.Windows.Forms.ListBox();
+            this.LogTab = new System.Windows.Forms.TabPage();
+            this.LogChooserGroupBox = new System.Windows.Forms.GroupBox();
+            this.VariScanLogChoice = new System.Windows.Forms.RadioButton();
+            this.SuperScanLogChoice = new System.Windows.Forms.RadioButton();
+            this.HumasonLogChoice = new System.Windows.Forms.RadioButton();
+            this.LogTextBox = new System.Windows.Forms.TextBox();
+            this.LogFileListBox = new System.Windows.Forms.ListBox();
             this.ParsedTextBox = new System.Windows.Forms.TextBox();
             this.LogNotesTab = new System.Windows.Forms.TabPage();
             this.ClearLogButton = new System.Windows.Forms.Button();
-            this.HotPursuitButton = new System.Windows.Forms.Button();
-            this.InitializeButton = new System.Windows.Forms.Button();
-            this.TransientSearchButton = new System.Windows.Forms.Button();
             this.KilolaniGroup.SuspendLayout();
             this.MoonGroup.SuspendLayout();
             this.SunGroup.SuspendLayout();
@@ -114,7 +118,8 @@
             this.NightShiftTabControl.SuspendLayout();
             this.ImagingTab.SuspendLayout();
             this.TargetTab.SuspendLayout();
-            this.HumasonLogTab.SuspendLayout();
+            this.LogTab.SuspendLayout();
+            this.LogChooserGroupBox.SuspendLayout();
             this.LogNotesTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -214,6 +219,18 @@
             this.KilolaniGroup.TabIndex = 7;
             this.KilolaniGroup.TabStop = false;
             this.KilolaniGroup.Text = "Kilolani System";
+            // 
+            // InitializeButton
+            // 
+            this.InitializeButton.BackColor = System.Drawing.Color.LightGreen;
+            this.InitializeButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.InitializeButton.Location = new System.Drawing.Point(15, 77);
+            this.InitializeButton.Name = "InitializeButton";
+            this.InitializeButton.Size = new System.Drawing.Size(87, 23);
+            this.InitializeButton.TabIndex = 9;
+            this.InitializeButton.Text = "Initialize";
+            this.InitializeButton.UseVisualStyleBackColor = false;
+            this.InitializeButton.Click += new System.EventHandler(this.InitializeButton_Click);
             // 
             // PreStackButton
             // 
@@ -428,6 +445,18 @@
             this.ImagingGroup.TabStop = false;
             this.ImagingGroup.Text = "Imaging";
             // 
+            // HotPursuitButton
+            // 
+            this.HotPursuitButton.BackColor = System.Drawing.Color.LightGreen;
+            this.HotPursuitButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HotPursuitButton.Location = new System.Drawing.Point(11, 177);
+            this.HotPursuitButton.Name = "HotPursuitButton";
+            this.HotPursuitButton.Size = new System.Drawing.Size(85, 23);
+            this.HotPursuitButton.TabIndex = 6;
+            this.HotPursuitButton.Text = "HotPursuit";
+            this.HotPursuitButton.UseVisualStyleBackColor = false;
+            this.HotPursuitButton.Click += new System.EventHandler(this.HotPursuitButton_Click);
+            // 
             // VariScanButton
             // 
             this.VariScanButton.BackColor = System.Drawing.Color.LightGreen;
@@ -581,6 +610,18 @@
             this.ToolGroup.TabIndex = 24;
             this.ToolGroup.TabStop = false;
             this.ToolGroup.Text = "Tools";
+            // 
+            // TransientSearchButton
+            // 
+            this.TransientSearchButton.BackColor = System.Drawing.Color.LightGreen;
+            this.TransientSearchButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TransientSearchButton.Location = new System.Drawing.Point(18, 304);
+            this.TransientSearchButton.Name = "TransientSearchButton";
+            this.TransientSearchButton.Size = new System.Drawing.Size(83, 37);
+            this.TransientSearchButton.TabIndex = 26;
+            this.TransientSearchButton.Text = "Transient Search";
+            this.TransientSearchButton.UseVisualStyleBackColor = false;
+            this.TransientSearchButton.Click += new System.EventHandler(this.TransientSearchButton_Click);
             // 
             // GuideLogButton
             // 
@@ -804,7 +845,7 @@
             this.NightShiftTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.NightShiftTabControl.Controls.Add(this.ImagingTab);
             this.NightShiftTabControl.Controls.Add(this.TargetTab);
-            this.NightShiftTabControl.Controls.Add(this.HumasonLogTab);
+            this.NightShiftTabControl.Controls.Add(this.LogTab);
             this.NightShiftTabControl.Controls.Add(this.LogNotesTab);
             this.NightShiftTabControl.HotTrack = true;
             this.NightShiftTabControl.Location = new System.Drawing.Point(3, 12);
@@ -844,52 +885,100 @@
             this.TargetTab.TabIndex = 0;
             this.TargetTab.Text = "Targets";
             // 
-            // HumasonLogTab
+            // LogTab
             // 
-            this.HumasonLogTab.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.HumasonLogTab.Controls.Add(this.HumasonLogTextBox);
-            this.HumasonLogTab.Controls.Add(this.HumasonLogFileListBox);
-            this.HumasonLogTab.Controls.Add(this.ParsedTextBox);
-            this.HumasonLogTab.ForeColor = System.Drawing.Color.White;
-            this.HumasonLogTab.Location = new System.Drawing.Point(4, 25);
-            this.HumasonLogTab.Name = "HumasonLogTab";
-            this.HumasonLogTab.Size = new System.Drawing.Size(487, 365);
-            this.HumasonLogTab.TabIndex = 5;
-            this.HumasonLogTab.Text = "Humason Log";
+            this.LogTab.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.LogTab.Controls.Add(this.LogChooserGroupBox);
+            this.LogTab.Controls.Add(this.LogTextBox);
+            this.LogTab.Controls.Add(this.LogFileListBox);
+            this.LogTab.Controls.Add(this.ParsedTextBox);
+            this.LogTab.ForeColor = System.Drawing.Color.White;
+            this.LogTab.Location = new System.Drawing.Point(4, 25);
+            this.LogTab.Name = "LogTab";
+            this.LogTab.Size = new System.Drawing.Size(487, 365);
+            this.LogTab.TabIndex = 5;
+            this.LogTab.Text = "Logs";
             // 
-            // HumasonLogTextBox
+            // LogChooserGroupBox
             // 
-            this.HumasonLogTextBox.BackColor = System.Drawing.Color.DarkCyan;
-            this.HumasonLogTextBox.ForeColor = System.Drawing.Color.White;
-            this.HumasonLogTextBox.Location = new System.Drawing.Point(-4, 91);
-            this.HumasonLogTextBox.Multiline = true;
-            this.HumasonLogTextBox.Name = "HumasonLogTextBox";
-            this.HumasonLogTextBox.ReadOnly = true;
-            this.HumasonLogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.HumasonLogTextBox.Size = new System.Drawing.Size(481, 277);
-            this.HumasonLogTextBox.TabIndex = 5;
+            this.LogChooserGroupBox.Controls.Add(this.VariScanLogChoice);
+            this.LogChooserGroupBox.Controls.Add(this.SuperScanLogChoice);
+            this.LogChooserGroupBox.Controls.Add(this.HumasonLogChoice);
+            this.LogChooserGroupBox.Location = new System.Drawing.Point(5, 5);
+            this.LogChooserGroupBox.Name = "LogChooserGroupBox";
+            this.LogChooserGroupBox.Size = new System.Drawing.Size(118, 79);
+            this.LogChooserGroupBox.TabIndex = 6;
+            this.LogChooserGroupBox.TabStop = false;
+            this.LogChooserGroupBox.Text = "Log";
             // 
-            // HumasonLogFileListBox
+            // VariScanLogChoice
             // 
-            this.HumasonLogFileListBox.BackColor = System.Drawing.Color.DarkCyan;
-            this.HumasonLogFileListBox.ForeColor = System.Drawing.Color.White;
-            this.HumasonLogFileListBox.FormattingEnabled = true;
-            this.HumasonLogFileListBox.Location = new System.Drawing.Point(3, 3);
-            this.HumasonLogFileListBox.Name = "HumasonLogFileListBox";
-            this.HumasonLogFileListBox.ScrollAlwaysVisible = true;
-            this.HumasonLogFileListBox.Size = new System.Drawing.Size(100, 82);
-            this.HumasonLogFileListBox.TabIndex = 4;
-            this.HumasonLogFileListBox.SelectedIndexChanged += new System.EventHandler(this.HumasonLogFileListBox_SelectedIndexChanged);
+            this.VariScanLogChoice.AutoSize = true;
+            this.VariScanLogChoice.Location = new System.Drawing.Point(15, 56);
+            this.VariScanLogChoice.Name = "VariScanLogChoice";
+            this.VariScanLogChoice.Size = new System.Drawing.Size(68, 17);
+            this.VariScanLogChoice.TabIndex = 2;
+            this.VariScanLogChoice.Text = "VariScan";
+            this.VariScanLogChoice.UseVisualStyleBackColor = true;
+            this.VariScanLogChoice.CheckedChanged += new System.EventHandler(this.VariScanLogChoice_CheckedChanged);
+            // 
+            // SuperScanLogChoice
+            // 
+            this.SuperScanLogChoice.AutoSize = true;
+            this.SuperScanLogChoice.Location = new System.Drawing.Point(15, 36);
+            this.SuperScanLogChoice.Name = "SuperScanLogChoice";
+            this.SuperScanLogChoice.Size = new System.Drawing.Size(78, 17);
+            this.SuperScanLogChoice.TabIndex = 1;
+            this.SuperScanLogChoice.Text = "SuperScan";
+            this.SuperScanLogChoice.UseVisualStyleBackColor = true;
+            this.SuperScanLogChoice.CheckedChanged += new System.EventHandler(this.SuperScanLogChoice_CheckedChanged);
+            // 
+            // HumasonLogChoice
+            // 
+            this.HumasonLogChoice.AutoSize = true;
+            this.HumasonLogChoice.Checked = true;
+            this.HumasonLogChoice.Location = new System.Drawing.Point(15, 16);
+            this.HumasonLogChoice.Name = "HumasonLogChoice";
+            this.HumasonLogChoice.Size = new System.Drawing.Size(70, 17);
+            this.HumasonLogChoice.TabIndex = 0;
+            this.HumasonLogChoice.TabStop = true;
+            this.HumasonLogChoice.Text = "Humason";
+            this.HumasonLogChoice.UseVisualStyleBackColor = true;
+            this.HumasonLogChoice.CheckedChanged += new System.EventHandler(this.HumasonLogChoice_CheckedChanged);
+            // 
+            // LogTextBox
+            // 
+            this.LogTextBox.BackColor = System.Drawing.Color.DarkCyan;
+            this.LogTextBox.ForeColor = System.Drawing.Color.White;
+            this.LogTextBox.Location = new System.Drawing.Point(-4, 91);
+            this.LogTextBox.Multiline = true;
+            this.LogTextBox.Name = "LogTextBox";
+            this.LogTextBox.ReadOnly = true;
+            this.LogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.LogTextBox.Size = new System.Drawing.Size(481, 277);
+            this.LogTextBox.TabIndex = 5;
+            // 
+            // LogFileListBox
+            // 
+            this.LogFileListBox.BackColor = System.Drawing.Color.DarkCyan;
+            this.LogFileListBox.ForeColor = System.Drawing.Color.White;
+            this.LogFileListBox.FormattingEnabled = true;
+            this.LogFileListBox.Location = new System.Drawing.Point(130, 3);
+            this.LogFileListBox.Name = "LogFileListBox";
+            this.LogFileListBox.ScrollAlwaysVisible = true;
+            this.LogFileListBox.Size = new System.Drawing.Size(100, 82);
+            this.LogFileListBox.TabIndex = 4;
+            this.LogFileListBox.SelectedIndexChanged += new System.EventHandler(this.LogFileListBox_SelectedIndexChanged);
             // 
             // ParsedTextBox
             // 
             this.ParsedTextBox.BackColor = System.Drawing.Color.DarkCyan;
             this.ParsedTextBox.ForeColor = System.Drawing.Color.White;
-            this.ParsedTextBox.Location = new System.Drawing.Point(108, 3);
+            this.ParsedTextBox.Location = new System.Drawing.Point(236, 3);
             this.ParsedTextBox.Multiline = true;
             this.ParsedTextBox.Name = "ParsedTextBox";
             this.ParsedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ParsedTextBox.Size = new System.Drawing.Size(369, 82);
+            this.ParsedTextBox.Size = new System.Drawing.Size(241, 82);
             this.ParsedTextBox.TabIndex = 3;
             // 
             // LogNotesTab
@@ -915,45 +1004,9 @@
             this.ClearLogButton.Name = "ClearLogButton";
             this.ClearLogButton.Size = new System.Drawing.Size(102, 23);
             this.ClearLogButton.TabIndex = 38;
-            this.ClearLogButton.Text = "Clear Log";
+            this.ClearLogButton.Text = "Clear Notes";
             this.ClearLogButton.UseVisualStyleBackColor = false;
             this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
-            // 
-            // HotPursuitButton
-            // 
-            this.HotPursuitButton.BackColor = System.Drawing.Color.LightGreen;
-            this.HotPursuitButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HotPursuitButton.Location = new System.Drawing.Point(11, 177);
-            this.HotPursuitButton.Name = "HotPursuitButton";
-            this.HotPursuitButton.Size = new System.Drawing.Size(85, 23);
-            this.HotPursuitButton.TabIndex = 6;
-            this.HotPursuitButton.Text = "HotPursuit";
-            this.HotPursuitButton.UseVisualStyleBackColor = false;
-            this.HotPursuitButton.Click += new System.EventHandler(this.HotPursuitButton_Click);
-            // 
-            // InitializeButton
-            // 
-            this.InitializeButton.BackColor = System.Drawing.Color.LightGreen;
-            this.InitializeButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.InitializeButton.Location = new System.Drawing.Point(15, 77);
-            this.InitializeButton.Name = "InitializeButton";
-            this.InitializeButton.Size = new System.Drawing.Size(87, 23);
-            this.InitializeButton.TabIndex = 9;
-            this.InitializeButton.Text = "Initialize";
-            this.InitializeButton.UseVisualStyleBackColor = false;
-            this.InitializeButton.Click += new System.EventHandler(this.InitializeButton_Click);
-            // 
-            // TransientSearchButton
-            // 
-            this.TransientSearchButton.BackColor = System.Drawing.Color.LightGreen;
-            this.TransientSearchButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.TransientSearchButton.Location = new System.Drawing.Point(18, 304);
-            this.TransientSearchButton.Name = "TransientSearchButton";
-            this.TransientSearchButton.Size = new System.Drawing.Size(83, 37);
-            this.TransientSearchButton.TabIndex = 26;
-            this.TransientSearchButton.Text = "Transient Search";
-            this.TransientSearchButton.UseVisualStyleBackColor = false;
-            this.TransientSearchButton.Click += new System.EventHandler(this.TransientSearchButton_Click);
             // 
             // FormNightShift
             // 
@@ -981,8 +1034,10 @@
             this.NightShiftTabControl.ResumeLayout(false);
             this.ImagingTab.ResumeLayout(false);
             this.TargetTab.ResumeLayout(false);
-            this.HumasonLogTab.ResumeLayout(false);
-            this.HumasonLogTab.PerformLayout();
+            this.LogTab.ResumeLayout(false);
+            this.LogTab.PerformLayout();
+            this.LogChooserGroupBox.ResumeLayout(false);
+            this.LogChooserGroupBox.PerformLayout();
             this.LogNotesTab.ResumeLayout(false);
             this.LogNotesTab.PerformLayout();
             this.ResumeLayout(false);
@@ -1049,10 +1104,10 @@
         private System.Windows.Forms.TabPage TargetTab;
         private System.Windows.Forms.TabPage LogNotesTab;
         private System.Windows.Forms.TabPage ImagingTab;
-        private System.Windows.Forms.TabPage HumasonLogTab;
+        private System.Windows.Forms.TabPage LogTab;
         private System.Windows.Forms.TextBox ParsedTextBox;
-        private System.Windows.Forms.ListBox HumasonLogFileListBox;
-        private System.Windows.Forms.TextBox HumasonLogTextBox;
+        private System.Windows.Forms.ListBox LogFileListBox;
+        private System.Windows.Forms.TextBox LogTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsDone;
         private System.Windows.Forms.Button ClearLogButton;
@@ -1061,6 +1116,10 @@
         private System.Windows.Forms.Button HotPursuitButton;
         private System.Windows.Forms.Button InitializeButton;
         private System.Windows.Forms.Button TransientSearchButton;
+        private System.Windows.Forms.GroupBox LogChooserGroupBox;
+        private System.Windows.Forms.RadioButton VariScanLogChoice;
+        private System.Windows.Forms.RadioButton SuperScanLogChoice;
+        private System.Windows.Forms.RadioButton HumasonLogChoice;
     }
 }
 

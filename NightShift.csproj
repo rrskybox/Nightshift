@@ -102,7 +102,9 @@
       <DependentUpon>FormWaimeaWeather.cs</DependentUpon>
     </Compile>
     <Compile Include="HumasonInterface.cs" />
-    <Compile Include="HumasonReader.cs" />
+    <Compile Include="VariScanReader.cs" />
+    <Compile Include="SuperScanReader.cs" />
+    <Compile Include="HumasonLogReader.cs" />
     <Compile Include="NSFileManagement.cs" />
     <Compile Include="FormNightShift.cs">
       <SubType>Form</SubType>

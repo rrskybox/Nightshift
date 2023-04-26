@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Deployment.Application;
-
+using System.IO;
 
 namespace NightShift
 {
@@ -65,13 +65,8 @@ namespace NightShift
             TaskDataGrid.ClearSelection();
             //Set the display date the the current date
             LogDateTimePicker.Value = DateTime.Now;
-            //Create Humason Log content for Humason Log tab
-            //Open log based on the most recent log
-            HumasonReader hReader = new HumasonReader(DateTime.Now);
-            //Get full list of logs in Log directory
-            List<DateTime> hLogList = hReader.HumasonLogDates;
-            foreach (DateTime ldate in hLogList) HumasonLogFileListBox.Items.Add(ldate.ToShortDateString());
-            HumasonLogFileListBox.SelectedIndex = HumasonLogFileListBox.Items.Count - 1;
+            HumasonLogChoice.Checked = false;
+            HumasonLogChoice.Checked = true;
             Show();
             return;
         }
@@ -524,95 +519,125 @@ namespace NightShift
             return;
         }
 
-        private void HumasonLogFileListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void LogFileListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //New date, new log
             string writeLog = "";
             string parsedLog = "";
-            HumasonLogTextBox.Clear();
+            LogTextBox.Clear();
             ParsedTextBox.Clear();
             //figure out the new datetime from the selected log file name
-            if (HumasonLogFileListBox.SelectedItem == null) return;
-            DateTime sdate = Convert.ToDateTime(HumasonLogFileListBox.SelectedItem.ToString());
-            HumasonReader hReader = new HumasonReader(sdate);
-            if (hReader.HumasonJoinedLog != null)
+            if (LogFileListBox.SelectedItem == null)
+                return;
+            DateTime sdate = Convert.ToDateTime(LogFileListBox.SelectedItem.ToString());
+            if (HumasonLogChoice.Checked)
             {
-                foreach (string line in hReader.HumasonJoinedLog) writeLog += line + "\r\n";
-                List<string> plog = ParseLog(hReader);
-                if (plog != null)
+                HumasonLogReader hReader = new HumasonLogReader(sdate);
+                if (hReader.JoinedLog != null)
                 {
-                    foreach (string line in plog) parsedLog += line + "\r\n";
+                    foreach (string line in hReader.JoinedLog)
+                        writeLog += line + "\r\n";
+                    List<string> plog = hReader.ParseLog();
+                    if (plog != null)
+                    {
+                        foreach (string line in plog) parsedLog += line + "\r\n";
+                    }
                 }
             }
-            HumasonLogTextBox.Text = writeLog;
-            HumasonLogTextBox.Select(0, 0);
-            ParsedTextBox.Text = parsedLog; ;
+            else if (SuperScanLogChoice.Checked)
+            {
+                SuperScanLogReader sReader = new SuperScanLogReader(sdate);
+                if (sReader.JoinedLog != null)
+                {
+                    foreach (string line in sReader.JoinedLog)
+                        writeLog += line + "\r\n";
+                    List<string> plog = sReader.ParseLog();
+                    if (plog != null)
+                    {
+                        foreach (string line in plog) parsedLog += line + "\r\n";
+                    }
+                }
+            }
+            else if (VariScanLogChoice.Checked)
+            {
+                VariScanLogReader vReader = new VariScanLogReader(sdate);
+                if (vReader.JoinedLog != null)
+                {
+                    foreach (string line in vReader.JoinedLog)
+                        writeLog += line + "\r\n";
+                    ParsedTextBox.Clear();
+                    parsedLog += "Collections: " + "\r\n";
+                    foreach (string col in vReader.CollectionList)
+                        parsedLog += "    " + Path.GetFileName(col) + "\r\n";
+                }
+
+            }
+            LogTextBox.Text = writeLog;
+            LogTextBox.Select(0, 0);
+            ParsedTextBox.Text = parsedLog;
             ParsedTextBox.Select(0, 0);
             return;
         }
 
-        private List<string> ParseLog(HumasonReader hReader)
+        private void HumasonLogChoice_CheckedChanged(object sender, EventArgs e)
         {
-            //Routines goes through log looking for successful images count with filters
-            //Look at each successive line in the log file
-            //When an "Imaging Target is found, then save the last word as the targetname
-            string targetName = null;
-            int[] filterXcount = { 0, 0, 0, 0, 0, 0, 0, 0 };
-            string exposureLen = null;
-            List<string> imgDataOut = new List<string>();
-
-            //List<string> logList = hReader.HumasonLog.ToList()) ;
-            foreach (string line in hReader.HumasonJoinedLog)
+            if (HumasonLogChoice.Checked)
             {
-                // this is the per line loop
-                // at the start, 
-                //   targetName = null;
-                //   filterXcount[] = null;
-                //   exposureLen = null;
-                if (line.Contains("Session Done"))
-                {
-                    //if the target name is not null, then serve up the previously parsed data
-                    if (targetName != null)
-                    {
-                        //readout filters
-                        string fstr = null;
-                        for (int i = 0; i < filterXcount.Length; i++)
-                            if (filterXcount[i] != 0) fstr += "\r\n\t" + "Filter " + i.ToString() + " - " + filterXcount[i].ToString() + " ";
-                        imgDataOut.Add(targetName + "- " + "Exposure: " + exposureLen + " sec, " + fstr);
-                    }
-                    targetName = null;
-                }
-                if (line.Contains("Imaging Target:"))
-                {
-                    //start target loop 
-                    //  then clear the counters
-                    for (int i = 0; i < filterXcount.Length; i++) filterXcount[i] = 0;
-                    exposureLen = "None";
-
-                    //set target to last word in line
-                    targetName = line.Split(' ')[5];
-                }
-                if (line.Contains("Imaging Filter"))
-                {
-                    //pickup image information
-                    string[] ls = line.Split(' ');
-                    //Time Imaging Filter 0 @ 600 sec (# 1 of 14) as example
-                    exposureLen = ls[5];
-                    ++filterXcount[Convert.ToInt32(ls[3])];
-                }
+                //Create Humason Log content for Log tab
+                //Open log based on the most recent log
+                HumasonLogReader hReader = new HumasonLogReader(DateTime.Now);
+                //Get full list of logs in Log directory
+                LogFileListBox.Items.Clear();
+                ParsedTextBox.Clear();
+                List<DateTime> hLogList = hReader.LogDates;
+                foreach (DateTime ldate in hLogList)
+                    LogFileListBox.Items.Add(ldate.ToShortDateString());
+                LogFileListBox.SelectedIndex = LogFileListBox.Items.Count - 1;
+                LogFileListBox_SelectedIndexChanged(sender, e);
             }
-            //if the target name is not null, then serve up the previously parsed data
-            if (targetName != null) //meaning that the session did not end before the log ended
-            {
-                //readout filters
-                string fstr = null;
-                for (int i = 0; i < filterXcount.Length; i++)
-                    if (filterXcount[i] != 0) fstr += "Filter " + i.ToString() + " - " + filterXcount[i].ToString() + " ";
-                imgDataOut.Add(targetName + "- " + "Exposure: " + exposureLen + " sec, " + fstr);
-            }
-            return imgDataOut;
+            return;
         }
 
+        private void SuperScanLogChoice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SuperScanLogChoice.Checked)
+            {
+                //Create SuperScan Log content for Log tab
+                //Open log based on the most recent log
+                SuperScanLogReader sReader = new SuperScanLogReader(DateTime.Now);
+                //Get full list of logs in Log directory
+                LogFileListBox.Items.Clear();
+                ParsedTextBox.Clear();
+                List<DateTime> sLogList = sReader.LogDates;
+                foreach (DateTime ldate in sLogList)
+                    LogFileListBox.Items.Add(ldate.ToShortDateString());
+                LogFileListBox.SelectedIndex = LogFileListBox.Items.Count - 1;
+                LogFileListBox_SelectedIndexChanged(sender, e);
+            }
+            return;
+
+        }
+
+        private void VariScanLogChoice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (VariScanLogChoice.Checked)
+            {
+                //Create SuperScan Log content for Log tab
+                //Open log based on the most recent log
+                VariScanLogReader vReader = new VariScanLogReader(DateTime.Now);
+                //Get full list of logs in Log directory
+                LogFileListBox.Items.Clear();
+                ParsedTextBox.Clear();
+                List<DateTime> vLogList = vReader.LogDates;
+                foreach (DateTime ldate in vLogList)
+                    LogFileListBox.Items.Add(ldate.ToShortDateString());
+                LogFileListBox.SelectedIndex = LogFileListBox.Items.Count - 1;
+                LogFileListBox_SelectedIndexChanged(sender, e);
+            }
+            return;
+
+
+        }
     }
 
 }
