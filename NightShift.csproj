@@ -26,7 +26,7 @@
     <ProductName>NightShift</ProductName>
     <PublisherName>TSXToolKit</PublisherName>
     <SuiteName>TSXToolKit</SuiteName>
-    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationRevision>31</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -64,7 +64,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>WLO-Telescope.ico</ApplicationIcon>
+    <ApplicationIcon>NightShift.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>NightShift.Program</StartupObject>
@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExoScanReader.cs" />
     <Compile Include="FormOlympiaWeather.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +103,7 @@
       <DependentUpon>FormWaimeaWeather.cs</DependentUpon>
     </Compile>
     <Compile Include="HumasonInterface.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="VariScanReader.cs" />
     <Compile Include="SuperScanReader.cs" />
     <Compile Include="HumasonLogReader.cs" />
@@ -195,7 +197,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WLO-Telescope.ico" />
+    <Content Include="NightShift.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

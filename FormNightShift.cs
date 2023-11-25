@@ -210,6 +210,16 @@ namespace NightShift
             return;
         }
 
+        private void ExoScanButton_Click(object sender, EventArgs e)
+        {
+            ExoScanButton.BackColor = RunningButtonColor;
+            bool islaunched = LaunchToolKitApp("ExoScan");
+            if (islaunched) ExoScanButton.BackColor = ReadyButtonColor;
+            else ExoScanButton.BackColor = RunningButtonColor;
+            if (islaunched) WriteTextLog("ExoScan launched");
+            return;
+        }
+
         private void HotPursuitButton_Click(object sender, EventArgs e)
         {
             HotPursuitButton.BackColor = RunningButtonColor;
@@ -519,17 +529,16 @@ namespace NightShift
             return;
         }
 
-        private void LogFileListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void LogDateListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //New date, new log
             string writeLog = "";
-            string parsedLog = "";
+            List<string> parsedLog = new List<string>();
             LogTextBox.Clear();
-            ParsedTextBox.Clear();
             //figure out the new datetime from the selected log file name
-            if (LogFileListBox.SelectedItem == null)
+            if (LogDateListBox.SelectedItem == null)
                 return;
-            DateTime sdate = Convert.ToDateTime(LogFileListBox.SelectedItem.ToString());
+            DateTime sdate = Convert.ToDateTime(LogDateListBox.SelectedItem.ToString());
             if (HumasonLogChoice.Checked)
             {
                 HumasonLogReader hReader = new HumasonLogReader(sdate);
@@ -540,8 +549,12 @@ namespace NightShift
                     List<string> plog = hReader.ParseLog();
                     if (plog != null)
                     {
-                        foreach (string line in plog) parsedLog += line + "\r\n";
+                        foreach (string line in plog) parsedLog.Add(line);
                     }
+                    TargetSetBox.Items.Clear();
+                    TargetSetBox.Items.AddRange(parsedLog.ToArray());
+                    if (parsedLog.Count > 0)
+                        TargetSetBox.SelectedIndex = 0;
                 }
             }
             else if (SuperScanLogChoice.Checked)
@@ -554,9 +567,13 @@ namespace NightShift
                     List<string> plog = sReader.ParseLog();
                     if (plog != null)
                     {
-                        foreach (string line in plog) parsedLog += line + "\r\n";
+                        foreach (string line in plog) parsedLog.Add(line);
                     }
                 }
+                TargetSetBox.Items.Clear();
+                TargetSetBox.Items.AddRange(parsedLog.ToArray());
+                if (parsedLog.Count > 0)
+                    TargetSetBox.SelectedIndex = 0;
             }
             else if (VariScanLogChoice.Checked)
             {
@@ -565,19 +582,38 @@ namespace NightShift
                 {
                     foreach (string line in vReader.JoinedLog)
                         writeLog += line + "\r\n";
-                    ParsedTextBox.Clear();
-                    parsedLog += "Collections: " + "\r\n";
+                    TargetSetBox.Items.Clear();
                     foreach (string col in vReader.CollectionList)
-                        parsedLog += "    " + Path.GetFileName(col) + "\r\n";
+                        parsedLog.Add(Path.GetFileName(col));
                 }
-
+                TargetSetBox.Items.Clear();
+                TargetSetBox.Items.AddRange(parsedLog.ToArray());
+                if (parsedLog.Count > 0)
+                    TargetSetBox.SelectedIndex = 0;
+            }
+            else if (ExoScanChoice.Checked)
+            {
+                if (TargetSetBox.Items.Count > 0)
+                {
+                    int tgt = 0;
+                    if (TargetSetBox.SelectedItem != null)
+                        tgt = TargetSetBox.SelectedIndex;
+                    ExoScanLogReader exoReader = new ExoScanLogReader(sdate, TargetSetBox.Items[tgt].ToString());
+                    if (exoReader.JoinedLog != null)
+                    {
+                        foreach (string line in exoReader.JoinedLog)
+                            writeLog += line + "\r\n";
+                        //TargetSetBox.Items.Clear();
+                        foreach (string col in exoReader.CollectionList)
+                            parsedLog.Add(Path.GetFileName(col));
+                    }
+                }
             }
             LogTextBox.Text = writeLog;
             LogTextBox.Select(0, 0);
-            ParsedTextBox.Text = parsedLog;
-            ParsedTextBox.Select(0, 0);
             return;
         }
+
 
         private void HumasonLogChoice_CheckedChanged(object sender, EventArgs e)
         {
@@ -587,15 +623,16 @@ namespace NightShift
                 //Open log based on the most recent log
                 HumasonLogReader hReader = new HumasonLogReader(DateTime.Now);
                 //Get full list of logs in Log directory
-                LogFileListBox.Items.Clear();
-                ParsedTextBox.Clear();
+                LogDateListBox.Items.Clear();
+                TargetSetBox.Items.Clear();
                 List<DateTime> hLogList = hReader.LogDates;
                 foreach (DateTime ldate in hLogList)
-                    LogFileListBox.Items.Add(ldate.ToShortDateString());
-                LogFileListBox.SelectedIndex = LogFileListBox.Items.Count - 1;
-                LogFileListBox_SelectedIndexChanged(sender, e);
+                    LogDateListBox.Items.Add(ldate.ToShortDateString());
+                if (LogDateListBox.Items.Count > 0)
+                    LogDateListBox.SelectedIndex = LogDateListBox.Items.Count - 1;
             }
             return;
+
         }
 
         private void SuperScanLogChoice_CheckedChanged(object sender, EventArgs e)
@@ -606,13 +643,13 @@ namespace NightShift
                 //Open log based on the most recent log
                 SuperScanLogReader sReader = new SuperScanLogReader(DateTime.Now);
                 //Get full list of logs in Log directory
-                LogFileListBox.Items.Clear();
-                ParsedTextBox.Clear();
+                LogDateListBox.Items.Clear();
+                TargetSetBox.Items.Clear();
                 List<DateTime> sLogList = sReader.LogDates;
                 foreach (DateTime ldate in sLogList)
-                    LogFileListBox.Items.Add(ldate.ToShortDateString());
-                LogFileListBox.SelectedIndex = LogFileListBox.Items.Count - 1;
-                LogFileListBox_SelectedIndexChanged(sender, e);
+                    LogDateListBox.Items.Add(ldate.ToShortDateString());
+                if (LogDateListBox.Items.Count > 0)
+                    LogDateListBox.SelectedIndex = LogDateListBox.Items.Count - 1;
             }
             return;
 
@@ -626,18 +663,65 @@ namespace NightShift
                 //Open log based on the most recent log
                 VariScanLogReader vReader = new VariScanLogReader(DateTime.Now);
                 //Get full list of logs in Log directory
-                LogFileListBox.Items.Clear();
-                ParsedTextBox.Clear();
+                LogDateListBox.Items.Clear();
+                TargetSetBox.Items.Clear();
                 List<DateTime> vLogList = vReader.LogDates;
                 foreach (DateTime ldate in vLogList)
-                    LogFileListBox.Items.Add(ldate.ToShortDateString());
-                LogFileListBox.SelectedIndex = LogFileListBox.Items.Count - 1;
-                LogFileListBox_SelectedIndexChanged(sender, e);
+                    LogDateListBox.Items.Add(ldate.ToShortDateString());
+                if (LogDateListBox.Items.Count > 0)
+                    LogDateListBox.SelectedIndex = LogDateListBox.Items.Count - 1;
+            }
+            return;
+        }
+
+        private void ExoScanChoice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ExoScanChoice.Checked)
+            {
+                //Create SuperScan Log content for Log tab
+                //Open log based on the most recent log
+                ExoScanLogReader exoReader = new ExoScanLogReader(DateTime.Now, null);
+                //Get full list of logs in Log directory
+                TargetSetBox.Items.Clear();
+                foreach (string tgt in exoReader.CollectionList)
+                    TargetSetBox.Items.Add(Path.GetFileNameWithoutExtension(tgt));
+                LogDateListBox.Items.Clear();
+                List<DateTime> exoLogList = exoReader.LogDates;
+                foreach (DateTime ldate in exoLogList)
+                    LogDateListBox.Items.Add(ldate.ToShortDateString());
+                if (LogDateListBox.Items.Count > 0)
+                    LogDateListBox.SelectedIndex = LogDateListBox.Items.Count - 1;
+            }
+            return;
+        }
+
+        private void TargetSetBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ExoScanChoice.Checked)
+            {
+                //Initialize Log file listing
+                LogTextBox.Text = null;
+                string target = TargetSetBox.SelectedItem.ToString();
+                DateTime dateChoice;
+                if (LogDateListBox.SelectedItem != null)
+                    dateChoice = Convert.ToDateTime(LogDateListBox.SelectedItem.ToString());
+                else
+                    dateChoice = DateTime.Now;
+                ExoScanLogReader exoReader = new ExoScanLogReader(dateChoice, target);
+                //Fill in new log dates into list
+                LogDateListBox.Items.Clear();
+                List<DateTime> exoLogList = exoReader.LogDates;
+                foreach (DateTime ldate in exoLogList)
+                    LogDateListBox.Items.Add(ldate.ToShortDateString());
+                //Select the last date in the list
+                if (LogDateListBox.Items.Count > 0)
+                    LogDateListBox.SelectedIndex = LogDateListBox.Items.Count - 1;
             }
             return;
 
-
         }
+
+
     }
 
 }

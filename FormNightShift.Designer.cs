@@ -33,8 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNightShift));
             this.WaimeaWeatherButton = new System.Windows.Forms.Button();
-            this.PlannerButton = new System.Windows.Forms.Button();
             this.LogDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.HumasonButton = new System.Windows.Forms.Button();
             this.SuperScanButton = new System.Windows.Forms.Button();
@@ -63,6 +63,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ImagingGroup = new System.Windows.Forms.GroupBox();
+            this.TransientSearchButton = new System.Windows.Forms.Button();
+            this.PlannerButton = new System.Windows.Forms.Button();
             this.HotPursuitButton = new System.Windows.Forms.Button();
             this.VariScanButton = new System.Windows.Forms.Button();
             this.AtGuider2Button = new System.Windows.Forms.Button();
@@ -76,7 +78,6 @@
             this.SeeingAnalyzerButton = new System.Windows.Forms.Button();
             this.SubFrameButton = new System.Windows.Forms.Button();
             this.ToolGroup = new System.Windows.Forms.GroupBox();
-            this.TransientSearchButton = new System.Windows.Forms.Button();
             this.GuideLogButton = new System.Windows.Forms.Button();
             this.DarksKnightButton = new System.Windows.Forms.Button();
             this.TargetDataGrid = new System.Windows.Forms.DataGridView();
@@ -98,15 +99,17 @@
             this.ImagingTab = new System.Windows.Forms.TabPage();
             this.TargetTab = new System.Windows.Forms.TabPage();
             this.LogTab = new System.Windows.Forms.TabPage();
+            this.TargetSetBox = new System.Windows.Forms.ListBox();
             this.LogChooserGroupBox = new System.Windows.Forms.GroupBox();
+            this.ExoScanChoice = new System.Windows.Forms.RadioButton();
             this.VariScanLogChoice = new System.Windows.Forms.RadioButton();
             this.SuperScanLogChoice = new System.Windows.Forms.RadioButton();
             this.HumasonLogChoice = new System.Windows.Forms.RadioButton();
             this.LogTextBox = new System.Windows.Forms.TextBox();
-            this.LogFileListBox = new System.Windows.Forms.ListBox();
-            this.ParsedTextBox = new System.Windows.Forms.TextBox();
+            this.LogDateListBox = new System.Windows.Forms.ListBox();
             this.LogNotesTab = new System.Windows.Forms.TabPage();
             this.ClearLogButton = new System.Windows.Forms.Button();
+            this.ExoScanButton = new System.Windows.Forms.Button();
             this.KilolaniGroup.SuspendLayout();
             this.MoonGroup.SuspendLayout();
             this.SunGroup.SuspendLayout();
@@ -135,18 +138,6 @@
             this.WaimeaWeatherButton.UseVisualStyleBackColor = false;
             this.WaimeaWeatherButton.Click += new System.EventHandler(this.WaimeaWeatherButton_Click);
             // 
-            // PlannerButton
-            // 
-            this.PlannerButton.BackColor = System.Drawing.Color.LightGreen;
-            this.PlannerButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PlannerButton.Location = new System.Drawing.Point(385, 339);
-            this.PlannerButton.Name = "PlannerButton";
-            this.PlannerButton.Size = new System.Drawing.Size(89, 23);
-            this.PlannerButton.TabIndex = 1;
-            this.PlannerButton.Text = "Image Planner";
-            this.PlannerButton.UseVisualStyleBackColor = false;
-            this.PlannerButton.Click += new System.EventHandler(this.PlannerButton_Click);
-            // 
             // LogDateTimePicker
             // 
             this.LogDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -160,7 +151,7 @@
             // 
             this.HumasonButton.BackColor = System.Drawing.Color.LightGreen;
             this.HumasonButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HumasonButton.Location = new System.Drawing.Point(11, 19);
+            this.HumasonButton.Location = new System.Drawing.Point(11, 76);
             this.HumasonButton.Name = "HumasonButton";
             this.HumasonButton.Size = new System.Drawing.Size(85, 23);
             this.HumasonButton.TabIndex = 3;
@@ -172,7 +163,7 @@
             // 
             this.SuperScanButton.BackColor = System.Drawing.Color.LightGreen;
             this.SuperScanButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.SuperScanButton.Location = new System.Drawing.Point(11, 119);
+            this.SuperScanButton.Location = new System.Drawing.Point(11, 134);
             this.SuperScanButton.Name = "SuperScanButton";
             this.SuperScanButton.Size = new System.Drawing.Size(85, 23);
             this.SuperScanButton.TabIndex = 4;
@@ -433,6 +424,9 @@
             // ImagingGroup
             // 
             this.ImagingGroup.BackColor = System.Drawing.Color.DarkCyan;
+            this.ImagingGroup.Controls.Add(this.ExoScanButton);
+            this.ImagingGroup.Controls.Add(this.TransientSearchButton);
+            this.ImagingGroup.Controls.Add(this.PlannerButton);
             this.ImagingGroup.Controls.Add(this.HotPursuitButton);
             this.ImagingGroup.Controls.Add(this.VariScanButton);
             this.ImagingGroup.Controls.Add(this.HumasonButton);
@@ -445,11 +439,34 @@
             this.ImagingGroup.TabStop = false;
             this.ImagingGroup.Text = "Imaging";
             // 
+            // TransientSearchButton
+            // 
+            this.TransientSearchButton.BackColor = System.Drawing.Color.LightGreen;
+            this.TransientSearchButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TransientSearchButton.Location = new System.Drawing.Point(11, 297);
+            this.TransientSearchButton.Name = "TransientSearchButton";
+            this.TransientSearchButton.Size = new System.Drawing.Size(85, 37);
+            this.TransientSearchButton.TabIndex = 26;
+            this.TransientSearchButton.Text = "Transient Search";
+            this.TransientSearchButton.UseVisualStyleBackColor = false;
+            this.TransientSearchButton.Click += new System.EventHandler(this.TransientSearchButton_Click);
+            // 
+            // PlannerButton
+            // 
+            this.PlannerButton.BackColor = System.Drawing.Color.LightGreen;
+            this.PlannerButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.PlannerButton.Location = new System.Drawing.Point(11, 21);
+            this.PlannerButton.Name = "PlannerButton";
+            this.PlannerButton.Size = new System.Drawing.Size(89, 23);
+            this.PlannerButton.TabIndex = 7;
+            this.PlannerButton.Text = "Image Planner";
+            this.PlannerButton.UseVisualStyleBackColor = false;
+            // 
             // HotPursuitButton
             // 
             this.HotPursuitButton.BackColor = System.Drawing.Color.LightGreen;
             this.HotPursuitButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HotPursuitButton.Location = new System.Drawing.Point(11, 177);
+            this.HotPursuitButton.Location = new System.Drawing.Point(11, 237);
             this.HotPursuitButton.Name = "HotPursuitButton";
             this.HotPursuitButton.Size = new System.Drawing.Size(85, 23);
             this.HotPursuitButton.TabIndex = 6;
@@ -461,7 +478,7 @@
             // 
             this.VariScanButton.BackColor = System.Drawing.Color.LightGreen;
             this.VariScanButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.VariScanButton.Location = new System.Drawing.Point(11, 148);
+            this.VariScanButton.Location = new System.Drawing.Point(11, 163);
             this.VariScanButton.Name = "VariScanButton";
             this.VariScanButton.Size = new System.Drawing.Size(85, 23);
             this.VariScanButton.TabIndex = 5;
@@ -593,7 +610,6 @@
             // ToolGroup
             // 
             this.ToolGroup.BackColor = System.Drawing.Color.DarkCyan;
-            this.ToolGroup.Controls.Add(this.TransientSearchButton);
             this.ToolGroup.Controls.Add(this.GuideLogButton);
             this.ToolGroup.Controls.Add(this.DarksKnightButton);
             this.ToolGroup.Controls.Add(this.SeeingAnalyzerButton);
@@ -610,18 +626,6 @@
             this.ToolGroup.TabIndex = 24;
             this.ToolGroup.TabStop = false;
             this.ToolGroup.Text = "Tools";
-            // 
-            // TransientSearchButton
-            // 
-            this.TransientSearchButton.BackColor = System.Drawing.Color.LightGreen;
-            this.TransientSearchButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.TransientSearchButton.Location = new System.Drawing.Point(18, 304);
-            this.TransientSearchButton.Name = "TransientSearchButton";
-            this.TransientSearchButton.Size = new System.Drawing.Size(83, 37);
-            this.TransientSearchButton.TabIndex = 26;
-            this.TransientSearchButton.Text = "Transient Search";
-            this.TransientSearchButton.UseVisualStyleBackColor = false;
-            this.TransientSearchButton.Click += new System.EventHandler(this.TransientSearchButton_Click);
             // 
             // GuideLogButton
             // 
@@ -771,7 +775,7 @@
             // 
             this.CloseButton.BackColor = System.Drawing.Color.LightGreen;
             this.CloseButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CloseButton.Location = new System.Drawing.Point(392, 412);
+            this.CloseButton.Location = new System.Drawing.Point(396, 454);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(99, 23);
             this.CloseButton.TabIndex = 9;
@@ -795,7 +799,7 @@
             // 
             this.ParkButton.BackColor = System.Drawing.Color.LightGreen;
             this.ParkButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ParkButton.Location = new System.Drawing.Point(3, 412);
+            this.ParkButton.Location = new System.Drawing.Point(7, 454);
             this.ParkButton.Name = "ParkButton";
             this.ParkButton.Size = new System.Drawing.Size(102, 23);
             this.ParkButton.TabIndex = 32;
@@ -852,7 +856,7 @@
             this.NightShiftTabControl.Name = "NightShiftTabControl";
             this.NightShiftTabControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.NightShiftTabControl.SelectedIndex = 0;
-            this.NightShiftTabControl.Size = new System.Drawing.Size(495, 394);
+            this.NightShiftTabControl.Size = new System.Drawing.Size(495, 436);
             this.NightShiftTabControl.TabIndex = 37;
             // 
             // ImagingTab
@@ -867,7 +871,7 @@
             this.ImagingTab.ForeColor = System.Drawing.Color.White;
             this.ImagingTab.Location = new System.Drawing.Point(4, 25);
             this.ImagingTab.Name = "ImagingTab";
-            this.ImagingTab.Size = new System.Drawing.Size(487, 365);
+            this.ImagingTab.Size = new System.Drawing.Size(487, 407);
             this.ImagingTab.TabIndex = 4;
             this.ImagingTab.Text = "Imaging";
             // 
@@ -875,41 +879,64 @@
             // 
             this.TargetTab.BackColor = System.Drawing.Color.LightSeaGreen;
             this.TargetTab.Controls.Add(this.TargetDataGrid);
-            this.TargetTab.Controls.Add(this.PlannerButton);
             this.TargetTab.Controls.Add(this.TargetListRefreshButton);
             this.TargetTab.ForeColor = System.Drawing.Color.White;
             this.TargetTab.Location = new System.Drawing.Point(4, 25);
             this.TargetTab.Name = "TargetTab";
             this.TargetTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TargetTab.Size = new System.Drawing.Size(487, 365);
+            this.TargetTab.Size = new System.Drawing.Size(487, 407);
             this.TargetTab.TabIndex = 0;
             this.TargetTab.Text = "Targets";
             // 
             // LogTab
             // 
             this.LogTab.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.LogTab.Controls.Add(this.TargetSetBox);
             this.LogTab.Controls.Add(this.LogChooserGroupBox);
             this.LogTab.Controls.Add(this.LogTextBox);
-            this.LogTab.Controls.Add(this.LogFileListBox);
-            this.LogTab.Controls.Add(this.ParsedTextBox);
+            this.LogTab.Controls.Add(this.LogDateListBox);
             this.LogTab.ForeColor = System.Drawing.Color.White;
             this.LogTab.Location = new System.Drawing.Point(4, 25);
             this.LogTab.Name = "LogTab";
-            this.LogTab.Size = new System.Drawing.Size(487, 365);
+            this.LogTab.Size = new System.Drawing.Size(487, 407);
             this.LogTab.TabIndex = 5;
             this.LogTab.Text = "Logs";
             // 
+            // TargetSetBox
+            // 
+            this.TargetSetBox.BackColor = System.Drawing.Color.DarkCyan;
+            this.TargetSetBox.ForeColor = System.Drawing.Color.White;
+            this.TargetSetBox.FormattingEnabled = true;
+            this.TargetSetBox.Location = new System.Drawing.Point(236, 12);
+            this.TargetSetBox.Name = "TargetSetBox";
+            this.TargetSetBox.ScrollAlwaysVisible = true;
+            this.TargetSetBox.Size = new System.Drawing.Size(241, 95);
+            this.TargetSetBox.TabIndex = 7;
+            this.TargetSetBox.SelectedIndexChanged += new System.EventHandler(this.TargetSetBox_SelectedIndexChanged);
+            // 
             // LogChooserGroupBox
             // 
+            this.LogChooserGroupBox.Controls.Add(this.ExoScanChoice);
             this.LogChooserGroupBox.Controls.Add(this.VariScanLogChoice);
             this.LogChooserGroupBox.Controls.Add(this.SuperScanLogChoice);
             this.LogChooserGroupBox.Controls.Add(this.HumasonLogChoice);
             this.LogChooserGroupBox.Location = new System.Drawing.Point(5, 5);
             this.LogChooserGroupBox.Name = "LogChooserGroupBox";
-            this.LogChooserGroupBox.Size = new System.Drawing.Size(118, 79);
+            this.LogChooserGroupBox.Size = new System.Drawing.Size(118, 102);
             this.LogChooserGroupBox.TabIndex = 6;
             this.LogChooserGroupBox.TabStop = false;
             this.LogChooserGroupBox.Text = "Log";
+            // 
+            // ExoScanChoice
+            // 
+            this.ExoScanChoice.AutoSize = true;
+            this.ExoScanChoice.Location = new System.Drawing.Point(15, 79);
+            this.ExoScanChoice.Name = "ExoScanChoice";
+            this.ExoScanChoice.Size = new System.Drawing.Size(68, 17);
+            this.ExoScanChoice.TabIndex = 3;
+            this.ExoScanChoice.Text = "ExoScan";
+            this.ExoScanChoice.UseVisualStyleBackColor = true;
+            this.ExoScanChoice.CheckedChanged += new System.EventHandler(this.ExoScanChoice_CheckedChanged);
             // 
             // VariScanLogChoice
             // 
@@ -950,36 +977,25 @@
             // 
             this.LogTextBox.BackColor = System.Drawing.Color.DarkCyan;
             this.LogTextBox.ForeColor = System.Drawing.Color.White;
-            this.LogTextBox.Location = new System.Drawing.Point(-4, 91);
+            this.LogTextBox.Location = new System.Drawing.Point(-4, 113);
             this.LogTextBox.Multiline = true;
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
             this.LogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LogTextBox.Size = new System.Drawing.Size(481, 277);
+            this.LogTextBox.Size = new System.Drawing.Size(481, 291);
             this.LogTextBox.TabIndex = 5;
             // 
-            // LogFileListBox
+            // LogDateListBox
             // 
-            this.LogFileListBox.BackColor = System.Drawing.Color.DarkCyan;
-            this.LogFileListBox.ForeColor = System.Drawing.Color.White;
-            this.LogFileListBox.FormattingEnabled = true;
-            this.LogFileListBox.Location = new System.Drawing.Point(130, 3);
-            this.LogFileListBox.Name = "LogFileListBox";
-            this.LogFileListBox.ScrollAlwaysVisible = true;
-            this.LogFileListBox.Size = new System.Drawing.Size(100, 82);
-            this.LogFileListBox.TabIndex = 4;
-            this.LogFileListBox.SelectedIndexChanged += new System.EventHandler(this.LogFileListBox_SelectedIndexChanged);
-            // 
-            // ParsedTextBox
-            // 
-            this.ParsedTextBox.BackColor = System.Drawing.Color.DarkCyan;
-            this.ParsedTextBox.ForeColor = System.Drawing.Color.White;
-            this.ParsedTextBox.Location = new System.Drawing.Point(236, 3);
-            this.ParsedTextBox.Multiline = true;
-            this.ParsedTextBox.Name = "ParsedTextBox";
-            this.ParsedTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ParsedTextBox.Size = new System.Drawing.Size(241, 82);
-            this.ParsedTextBox.TabIndex = 3;
+            this.LogDateListBox.BackColor = System.Drawing.Color.DarkCyan;
+            this.LogDateListBox.ForeColor = System.Drawing.Color.White;
+            this.LogDateListBox.FormattingEnabled = true;
+            this.LogDateListBox.Location = new System.Drawing.Point(130, 11);
+            this.LogDateListBox.Name = "LogDateListBox";
+            this.LogDateListBox.ScrollAlwaysVisible = true;
+            this.LogDateListBox.Size = new System.Drawing.Size(100, 95);
+            this.LogDateListBox.TabIndex = 4;
+            this.LogDateListBox.SelectedIndexChanged += new System.EventHandler(this.LogDateListBox_SelectedIndexChanged);
             // 
             // LogNotesTab
             // 
@@ -992,7 +1008,7 @@
             this.LogNotesTab.Location = new System.Drawing.Point(4, 25);
             this.LogNotesTab.Name = "LogNotesTab";
             this.LogNotesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.LogNotesTab.Size = new System.Drawing.Size(487, 365);
+            this.LogNotesTab.Size = new System.Drawing.Size(487, 407);
             this.LogNotesTab.TabIndex = 1;
             this.LogNotesTab.Text = "Notes";
             // 
@@ -1000,7 +1016,7 @@
             // 
             this.ClearLogButton.BackColor = System.Drawing.Color.LightGreen;
             this.ClearLogButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ClearLogButton.Location = new System.Drawing.Point(196, 412);
+            this.ClearLogButton.Location = new System.Drawing.Point(200, 454);
             this.ClearLogButton.Name = "ClearLogButton";
             this.ClearLogButton.Size = new System.Drawing.Size(102, 23);
             this.ClearLogButton.TabIndex = 38;
@@ -1008,17 +1024,30 @@
             this.ClearLogButton.UseVisualStyleBackColor = false;
             this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
             // 
+            // ExoScanButton
+            // 
+            this.ExoScanButton.BackColor = System.Drawing.Color.LightGreen;
+            this.ExoScanButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ExoScanButton.Location = new System.Drawing.Point(11, 192);
+            this.ExoScanButton.Name = "ExoScanButton";
+            this.ExoScanButton.Size = new System.Drawing.Size(85, 23);
+            this.ExoScanButton.TabIndex = 27;
+            this.ExoScanButton.Text = "ExoScan";
+            this.ExoScanButton.UseVisualStyleBackColor = false;
+            this.ExoScanButton.Click += new System.EventHandler(this.ExoScanButton_Click);
+            // 
             // FormNightShift
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
-            this.ClientSize = new System.Drawing.Size(510, 443);
+            this.ClientSize = new System.Drawing.Size(510, 489);
             this.Controls.Add(this.ClearLogButton);
             this.Controls.Add(this.ParkButton);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.NightShiftTabControl);
             this.ForeColor = System.Drawing.Color.White;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormNightShift";
             this.Text = "  ";
             this.KilolaniGroup.ResumeLayout(false);
@@ -1047,7 +1076,6 @@
         #endregion
 
         private System.Windows.Forms.Button WaimeaWeatherButton;
-        private System.Windows.Forms.Button PlannerButton;
         private System.Windows.Forms.DateTimePicker LogDateTimePicker;
         private System.Windows.Forms.Button HumasonButton;
         private System.Windows.Forms.Button SuperScanButton;
@@ -1105,8 +1133,7 @@
         private System.Windows.Forms.TabPage LogNotesTab;
         private System.Windows.Forms.TabPage ImagingTab;
         private System.Windows.Forms.TabPage LogTab;
-        private System.Windows.Forms.TextBox ParsedTextBox;
-        private System.Windows.Forms.ListBox LogFileListBox;
+        private System.Windows.Forms.ListBox LogDateListBox;
         private System.Windows.Forms.TextBox LogTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsDone;
@@ -1120,6 +1147,10 @@
         private System.Windows.Forms.RadioButton VariScanLogChoice;
         private System.Windows.Forms.RadioButton SuperScanLogChoice;
         private System.Windows.Forms.RadioButton HumasonLogChoice;
+        private System.Windows.Forms.Button PlannerButton;
+        private System.Windows.Forms.RadioButton ExoScanChoice;
+        private System.Windows.Forms.ListBox TargetSetBox;
+        private System.Windows.Forms.Button ExoScanButton;
     }
 }
 

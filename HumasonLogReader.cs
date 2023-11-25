@@ -92,16 +92,10 @@ namespace NightShift
             foreach (string fName in fileList)
             {
                 //Convert file path to date
-                string logName = Path.GetFileName(fName).Split('.')[0];
-                DateTime logDate = new DateTime();
-                try
-                {
-                    logDate = new DateTime(Convert.ToInt32(logName.Split('_')[0]), Convert.ToInt32(logName.Split('_')[1]), Convert.ToInt32(logName.Split('_')[2]));
-                }
-                catch (Exception ex)
-                {
-                    //Just move on to the next one
-                }
+                string logName = Path.GetFileNameWithoutExtension(fName);
+                DateTime? logDate = Utility.ParseDate(logName,'_');
+                if (logDate == null)
+                    return dtList;
                 //Read the log, looking for its range
                 bool isToday = false;
                 bool isYesterday = false;
@@ -128,9 +122,9 @@ namespace NightShift
                     //if today is true, then add date to date list (if not there already)
                     //if yesterday is true, then add date-1day to datelist (if not already there)
                     if (isToday)
-                        if (dtList != null && !dtList.Contains(logDate)) dtList.Add(logDate);
+                        if (dtList != null && !dtList.Contains((DateTime)logDate)) dtList.Add((DateTime)logDate);
                     if (isYesterday)
-                        if (dtList != null && !dtList.Contains(logDate.AddDays(-1))) dtList.Add(logDate.AddDays(-1));
+                        if (dtList != null && !dtList.Contains(((DateTime)logDate).AddDays(-1))) dtList.Add(((DateTime)logDate).AddDays(-1));
                 }
             }
             return dtList.OrderBy(x => x.Date).ToList();

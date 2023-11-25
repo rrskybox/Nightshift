@@ -109,46 +109,28 @@ namespace NightShift
             foreach (string fName in fileList)
             {
                 //Convert file path to date
-                string logName = Path.GetFileName(fName).Split('.')[0];
-                DateTime logDate = new DateTime();
-                try
-                {
-                    logDate = new DateTime(Convert.ToInt32(logName.Split('_')[0]), Convert.ToInt32(logName.Split('_')[1]), Convert.ToInt32(logName.Split('_')[2]));
-                }
-                catch (Exception ex)
-                {
-                    //Just move on to the next one
-                }
+                string logName = Path.GetFileNameWithoutExtension(fName);
+                DateTime? logDate = Utility.ParseDate(logName, '_');
+                if (logDate == null)
+                    return dtList;
                 //Read the log, looking for its range
                 bool isToday = false;
                 bool isYesterday = false;
-                if (logDate != null)
+
+                List<string> logLines = File.ReadLines(fName).ToList();
+                foreach (string line in logLines)
                 {
-                    List<string> logLines = File.ReadLines(fName).ToList();
-                    foreach (string line in logLines)
-                        if (line != "")
-                        {
-                            string lTime = line.Split(' ')[0];
-                            string[] lSplit = lTime.Split(':');
-                            try
-                            {
-                                TimeSpan oClock = new TimeSpan(Convert.ToInt32(lSplit[0]), Convert.ToInt32(lSplit[1]), Convert.ToInt32(lSplit[2]));
-                                if (oClock < new TimeSpan(11, 0, 0))
-                                    isYesterday = true;
-                                else isToday = true;
-                            }
-                            catch (Exception ex)
-                            {
-                                //Just drop through
-                            }
-                        }
-                    //if today is true, then add date to date list (if not there already)
-                    //if yesterday is true, then add date-1day to datelist (if not already there)
-                    if (isToday)
-                        if (dtList != null && !dtList.Contains(logDate)) dtList.Add(logDate);
-                    if (isYesterday)
-                        if (dtList != null && !dtList.Contains(logDate.AddDays(-1))) dtList.Add(logDate.AddDays(-1));
+                    TimeSpan? oClock = Utility.ParseHour(line, ':');
+                    if (oClock < new TimeSpan(11, 0, 0))
+                        isYesterday = true;
+                    else isToday = true;
                 }
+                //if today is true, then add date to date list (if not there already)
+                //if yesterday is true, then add date-1day to datelist (if not already there)
+                if (isToday)
+                    if (dtList != null && !dtList.Contains((DateTime)logDate)) dtList.Add((DateTime)logDate);
+                if (isYesterday)
+                    if (dtList != null && !dtList.Contains(((DateTime)logDate).AddDays(-1))) dtList.Add(((DateTime)logDate).AddDays(-1));
             }
             return dtList.OrderBy(x => x.Date).ToList();
         }
