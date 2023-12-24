@@ -16,11 +16,7 @@ namespace NightShift
         public FormOlympiaWeather()
         {
             InitializeComponent();
-            string imageUrl = "http://www.cleardarksky.com/c/OlympiaWAcsk.gif?c=2134853";
-            WebRequest requestPic = WebRequest.Create(imageUrl);
-            WebResponse responsePic = requestPic.GetResponse();
-            Image webImage = Image.FromStream(responsePic.GetResponseStream()); // Error
-            OlyWeatherPictureBox.Image = webImage;
+            OlympiaWeatherBrowserBox.Url = new System.Uri("https://clearoutside.com/forecast/47.02/-122.88", System.UriKind.Absolute);
             return;
         }
 

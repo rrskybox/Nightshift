@@ -28,34 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MaunaWeatherWebBrowser = new System.Windows.Forms.WebBrowser();
+            this.WaimeaWeatherBrowserBox = new System.Windows.Forms.WebBrowser();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
-            // MaunaWeatherWebBrowser
+            // WaimeaWeatherBrowserBox
             // 
-            this.MaunaWeatherWebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MaunaWeatherWebBrowser.Location = new System.Drawing.Point(0, 0);
-            this.MaunaWeatherWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.MaunaWeatherWebBrowser.Name = "MaunaWeatherWebBrowser";
-            this.MaunaWeatherWebBrowser.Size = new System.Drawing.Size(1238, 933);
-            this.MaunaWeatherWebBrowser.TabIndex = 0;
+            this.WaimeaWeatherBrowserBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WaimeaWeatherBrowserBox.Location = new System.Drawing.Point(0, 0);
+            this.WaimeaWeatherBrowserBox.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WaimeaWeatherBrowserBox.Name = "WaimeaWeatherBrowserBox";
+            this.WaimeaWeatherBrowserBox.ScriptErrorsSuppressed = true;
+            this.WaimeaWeatherBrowserBox.Size = new System.Drawing.Size(1238, 933);
+            this.WaimeaWeatherBrowserBox.TabIndex = 0;
             // 
-            // FormMaunaWeather
+            // FormWaimeaWeather
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1238, 933);
-            this.Controls.Add(this.MaunaWeatherWebBrowser);
+            this.Controls.Add(this.WaimeaWeatherBrowserBox);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Name = "FormMaunaWeather";
-            this.Text = "MaunaWeather";
+            this.Name = "FormWaimeaWeather";
+            this.Text = "Waimea Weather";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.WebBrowser MaunaWeatherWebBrowser;
+        private System.Windows.Forms.WebBrowser WaimeaWeatherBrowserBox;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

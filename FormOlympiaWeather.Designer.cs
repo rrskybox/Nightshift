@@ -28,35 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.OlyWeatherPictureBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.OlyWeatherPictureBox)).BeginInit();
+            this.OlympiaWeatherBrowserBox = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
-            // OlyWeatherPictureBox
+            // OlympiaWeatherBrowserBox
             // 
-            this.OlyWeatherPictureBox.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.OlyWeatherPictureBox.Location = new System.Drawing.Point(12, 2);
-            this.OlyWeatherPictureBox.Name = "OlyWeatherPictureBox";
-            this.OlyWeatherPictureBox.Size = new System.Drawing.Size(1096, 294);
-            this.OlyWeatherPictureBox.TabIndex = 0;
-            this.OlyWeatherPictureBox.TabStop = false;
+            this.OlympiaWeatherBrowserBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OlympiaWeatherBrowserBox.Location = new System.Drawing.Point(0, 0);
+            this.OlympiaWeatherBrowserBox.MinimumSize = new System.Drawing.Size(20, 20);
+            this.OlympiaWeatherBrowserBox.Name = "OlympiaWeatherBrowserBox";
+            this.OlympiaWeatherBrowserBox.ScriptErrorsSuppressed = true;
+            this.OlympiaWeatherBrowserBox.Size = new System.Drawing.Size(1222, 894);
+            this.OlympiaWeatherBrowserBox.TabIndex = 0;
             // 
             // FormOlympiaWeather
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 298);
-            this.Controls.Add(this.OlyWeatherPictureBox);
+            this.ClientSize = new System.Drawing.Size(1222, 894);
+            this.Controls.Add(this.OlympiaWeatherBrowserBox);
             this.Name = "FormOlympiaWeather";
             this.Text = "Olympia Weather";
             this.Load += new System.EventHandler(this.FormOlympiaWeather_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.OlyWeatherPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox OlyWeatherPictureBox;
+        private System.Windows.Forms.WebBrowser OlympiaWeatherBrowserBox;
     }
 }

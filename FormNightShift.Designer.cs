@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNightShift));
-            this.WaimeaWeatherButton = new System.Windows.Forms.Button();
             this.LogDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.HumasonButton = new System.Windows.Forms.Button();
             this.SuperScanButton = new System.Windows.Forms.Button();
@@ -63,6 +62,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ImagingGroup = new System.Windows.Forms.GroupBox();
+            this.ExoScanButton = new System.Windows.Forms.Button();
             this.TransientSearchButton = new System.Windows.Forms.Button();
             this.PlannerButton = new System.Windows.Forms.Button();
             this.HotPursuitButton = new System.Windows.Forms.Button();
@@ -87,7 +87,6 @@
             this.TransitTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SetTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Constellation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OlympiaWeatherButton = new System.Windows.Forms.Button();
             this.NotesTextBox = new System.Windows.Forms.TextBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.TargetListRefreshButton = new System.Windows.Forms.Button();
@@ -109,7 +108,9 @@
             this.LogDateListBox = new System.Windows.Forms.ListBox();
             this.LogNotesTab = new System.Windows.Forms.TabPage();
             this.ClearLogButton = new System.Windows.Forms.Button();
-            this.ExoScanButton = new System.Windows.Forms.Button();
+            this.ConditionsTab = new System.Windows.Forms.TabPage();
+            this.WaimeaWeatherButton = new System.Windows.Forms.Button();
+            this.OlympiaWeatherButton = new System.Windows.Forms.Button();
             this.KilolaniGroup.SuspendLayout();
             this.MoonGroup.SuspendLayout();
             this.SunGroup.SuspendLayout();
@@ -124,19 +125,8 @@
             this.LogTab.SuspendLayout();
             this.LogChooserGroupBox.SuspendLayout();
             this.LogNotesTab.SuspendLayout();
+            this.ConditionsTab.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // WaimeaWeatherButton
-            // 
-            this.WaimeaWeatherButton.BackColor = System.Drawing.Color.LightGreen;
-            this.WaimeaWeatherButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.WaimeaWeatherButton.Location = new System.Drawing.Point(6, 38);
-            this.WaimeaWeatherButton.Name = "WaimeaWeatherButton";
-            this.WaimeaWeatherButton.Size = new System.Drawing.Size(119, 23);
-            this.WaimeaWeatherButton.TabIndex = 0;
-            this.WaimeaWeatherButton.Text = "Waimea Weather";
-            this.WaimeaWeatherButton.UseVisualStyleBackColor = false;
-            this.WaimeaWeatherButton.Click += new System.EventHandler(this.WaimeaWeatherButton_Click);
             // 
             // LogDateTimePicker
             // 
@@ -438,6 +428,18 @@
             this.ImagingGroup.TabIndex = 17;
             this.ImagingGroup.TabStop = false;
             this.ImagingGroup.Text = "Imaging";
+            // 
+            // ExoScanButton
+            // 
+            this.ExoScanButton.BackColor = System.Drawing.Color.LightGreen;
+            this.ExoScanButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ExoScanButton.Location = new System.Drawing.Point(11, 192);
+            this.ExoScanButton.Name = "ExoScanButton";
+            this.ExoScanButton.Size = new System.Drawing.Size(85, 23);
+            this.ExoScanButton.TabIndex = 27;
+            this.ExoScanButton.Text = "ExoScan";
+            this.ExoScanButton.UseVisualStyleBackColor = false;
+            this.ExoScanButton.Click += new System.EventHandler(this.ExoScanButton_Click);
             // 
             // TransientSearchButton
             // 
@@ -747,18 +749,6 @@
             this.Constellation.Name = "Constellation";
             this.Constellation.ReadOnly = true;
             // 
-            // OlympiaWeatherButton
-            // 
-            this.OlympiaWeatherButton.BackColor = System.Drawing.Color.LightGreen;
-            this.OlympiaWeatherButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.OlympiaWeatherButton.Location = new System.Drawing.Point(6, 67);
-            this.OlympiaWeatherButton.Name = "OlympiaWeatherButton";
-            this.OlympiaWeatherButton.Size = new System.Drawing.Size(119, 23);
-            this.OlympiaWeatherButton.TabIndex = 26;
-            this.OlympiaWeatherButton.Text = "Olympia Weather";
-            this.OlympiaWeatherButton.UseVisualStyleBackColor = false;
-            this.OlympiaWeatherButton.Click += new System.EventHandler(this.OlympiaWeatherButton_Click);
-            // 
             // NotesTextBox
             // 
             this.NotesTextBox.BackColor = System.Drawing.Color.DarkCyan;
@@ -851,6 +841,7 @@
             this.NightShiftTabControl.Controls.Add(this.TargetTab);
             this.NightShiftTabControl.Controls.Add(this.LogTab);
             this.NightShiftTabControl.Controls.Add(this.LogNotesTab);
+            this.NightShiftTabControl.Controls.Add(this.ConditionsTab);
             this.NightShiftTabControl.HotTrack = true;
             this.NightShiftTabControl.Location = new System.Drawing.Point(3, 12);
             this.NightShiftTabControl.Name = "NightShiftTabControl";
@@ -1000,8 +991,6 @@
             // LogNotesTab
             // 
             this.LogNotesTab.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.LogNotesTab.Controls.Add(this.WaimeaWeatherButton);
-            this.LogNotesTab.Controls.Add(this.OlympiaWeatherButton);
             this.LogNotesTab.Controls.Add(this.TaskDataGrid);
             this.LogNotesTab.Controls.Add(this.NotesTextBox);
             this.LogNotesTab.Controls.Add(this.LogDateTimePicker);
@@ -1024,17 +1013,40 @@
             this.ClearLogButton.UseVisualStyleBackColor = false;
             this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
             // 
-            // ExoScanButton
+            // ConditionsTab
             // 
-            this.ExoScanButton.BackColor = System.Drawing.Color.LightGreen;
-            this.ExoScanButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ExoScanButton.Location = new System.Drawing.Point(11, 192);
-            this.ExoScanButton.Name = "ExoScanButton";
-            this.ExoScanButton.Size = new System.Drawing.Size(85, 23);
-            this.ExoScanButton.TabIndex = 27;
-            this.ExoScanButton.Text = "ExoScan";
-            this.ExoScanButton.UseVisualStyleBackColor = false;
-            this.ExoScanButton.Click += new System.EventHandler(this.ExoScanButton_Click);
+            this.ConditionsTab.BackColor = System.Drawing.Color.DarkCyan;
+            this.ConditionsTab.Controls.Add(this.WaimeaWeatherButton);
+            this.ConditionsTab.Controls.Add(this.OlympiaWeatherButton);
+            this.ConditionsTab.Location = new System.Drawing.Point(4, 25);
+            this.ConditionsTab.Name = "ConditionsTab";
+            this.ConditionsTab.Size = new System.Drawing.Size(487, 407);
+            this.ConditionsTab.TabIndex = 6;
+            this.ConditionsTab.Text = "Conditions";
+            // 
+            // WaimeaWeatherButton
+            // 
+            this.WaimeaWeatherButton.BackColor = System.Drawing.Color.LightGreen;
+            this.WaimeaWeatherButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.WaimeaWeatherButton.Location = new System.Drawing.Point(5, 5);
+            this.WaimeaWeatherButton.Name = "WaimeaWeatherButton";
+            this.WaimeaWeatherButton.Size = new System.Drawing.Size(119, 23);
+            this.WaimeaWeatherButton.TabIndex = 27;
+            this.WaimeaWeatherButton.Text = "Waimea Weather";
+            this.WaimeaWeatherButton.UseVisualStyleBackColor = false;
+            this.WaimeaWeatherButton.Click += new System.EventHandler(this.WaimeaWeatherButton_Click);
+            // 
+            // OlympiaWeatherButton
+            // 
+            this.OlympiaWeatherButton.BackColor = System.Drawing.Color.LightGreen;
+            this.OlympiaWeatherButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.OlympiaWeatherButton.Location = new System.Drawing.Point(5, 34);
+            this.OlympiaWeatherButton.Name = "OlympiaWeatherButton";
+            this.OlympiaWeatherButton.Size = new System.Drawing.Size(119, 23);
+            this.OlympiaWeatherButton.TabIndex = 28;
+            this.OlympiaWeatherButton.Text = "Olympia Weather";
+            this.OlympiaWeatherButton.UseVisualStyleBackColor = false;
+            this.OlympiaWeatherButton.Click += new System.EventHandler(this.OlympiaWeatherButton_Click);
             // 
             // FormNightShift
             // 
@@ -1069,13 +1081,12 @@
             this.LogChooserGroupBox.PerformLayout();
             this.LogNotesTab.ResumeLayout(false);
             this.LogNotesTab.PerformLayout();
+            this.ConditionsTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button WaimeaWeatherButton;
         private System.Windows.Forms.DateTimePicker LogDateTimePicker;
         private System.Windows.Forms.Button HumasonButton;
         private System.Windows.Forms.Button SuperScanButton;
@@ -1116,7 +1127,6 @@
         private System.Windows.Forms.GroupBox ToolGroup;
         private System.Windows.Forms.DataGridView TargetDataGrid;
         private System.Windows.Forms.Button DarksKnightButton;
-        private System.Windows.Forms.Button OlympiaWeatherButton;
         private System.Windows.Forms.TextBox NotesTextBox;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button TargetListRefreshButton;
@@ -1151,6 +1161,9 @@
         private System.Windows.Forms.RadioButton ExoScanChoice;
         private System.Windows.Forms.ListBox TargetSetBox;
         private System.Windows.Forms.Button ExoScanButton;
+        private System.Windows.Forms.TabPage ConditionsTab;
+        private System.Windows.Forms.Button WaimeaWeatherButton;
+        private System.Windows.Forms.Button OlympiaWeatherButton;
     }
 }
 

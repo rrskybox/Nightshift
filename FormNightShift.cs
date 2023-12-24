@@ -161,15 +161,6 @@ namespace NightShift
             NotesTextBox.AppendText("* " + DateTime.Now.ToShortTimeString() + ": " + logString + "\r\n");
         }
 
-
-        private void WaimeaWeatherButton_Click(object sender, EventArgs e)
-        {
-            NSFileManagement nsf = new NSFileManagement();
-            Form waimeaWeatherForm = new FormWaimeaWeather();
-            waimeaWeatherForm.Show();
-            return;
-        }
-
         private void PlannerButton_Click(object sender, EventArgs e)
         {
             PlannerButton.BackColor = RunningButtonColor;
@@ -400,15 +391,6 @@ namespace NightShift
             else TransientSearchButton.BackColor = RunningButtonColor;
             if (islaunched) WriteTextLog("Transient Search Launched");
             return;
-        }
-
-
-        private void OlympiaWeatherButton_Click(object sender, EventArgs e)
-        {
-            Form olyWeatherForm = new FormOlympiaWeather();
-            olyWeatherForm.Show();
-            return;
-
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -720,6 +702,22 @@ namespace NightShift
             return;
 
         }
+
+        private void WaimeaWeatherButton_Click(object sender, EventArgs e)
+        {
+            Form waimeaWeatherForm = new FormWaimeaWeather();
+            waimeaWeatherForm.Show();
+            return;
+        }
+
+        private void OlympiaWeatherButton_Click(object sender, EventArgs e)
+        {
+            Form olyWeatherForm = new FormOlympiaWeather();
+            olyWeatherForm.Show();
+            return;
+
+        }
+
 
 
     }
